@@ -26,8 +26,6 @@ public abstract class Conta {
     
     public boolean fazerLogin(String login, int senha){
         
-        
-        
         return false;
     }
 
