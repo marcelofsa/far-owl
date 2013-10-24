@@ -10,6 +10,13 @@ package model;
  */
 public class Oficial extends Usuario{
 
+    /**
+     *
+     * @param nome
+     * @param login
+     * @param senha
+     * @param email
+     */
     public Oficial(String nome, String login, int senha, String email) {
         super(nome, login, senha, email);
     }
