@@ -9,6 +9,8 @@ package model;
  * @author CasaPc
  */
 public class Comum extends Usuario{
+    
+    private String sobrenome;
 
     /**
      *
@@ -19,6 +21,10 @@ public class Comum extends Usuario{
      */
     public Comum(String nome, String login, int senha, String email) {
         super(nome, login, senha, email);
+    }
+
+    void setSobrenome(String sobrenome) {
+        this.sobrenome=sobrenome;
     }
     
 }

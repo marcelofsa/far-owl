@@ -16,6 +16,7 @@ public class Controller {
     private String BlackList[];
     private ArrayList<Conta> contas=new ArrayList();
     private ArrayList<Conta> contasDeletadas=new ArrayList();
+    private Conta logado;
     
     /**
      *
@@ -49,6 +50,7 @@ public class Controller {
         
     if(contas.contains(c)){
             contas.add(c);
+            logado=c;
     }
         else {
             throw new UsuarioJaExisteException("Este Login já esta sendo utilizado por outro Usuario");
@@ -56,6 +58,18 @@ public class Controller {
         }else {
             throw new SenhaincompativelException("A senha e sua confirmação diferem");
         }
+    }
+    
+    public void criarPerfil(String sobrenome,String estado, String cidade, String pais){
+    
+       if(logado instanceof Usuario){
+       ((Usuario)logado).setCidade(cidade);
+       ((Usuario)logado).setEstado(estado);
+       ((Usuario)logado).setPais(pais);
+       }
+    if(logado instanceof Comum){
+       ((Comum)logado).setSobrenome(sobrenome);
+    }
     }
     
     /**
