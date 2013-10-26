@@ -9,7 +9,17 @@ package model;
  * @author CasaPc
  */
 public class Controller {
+    
+    private String BlackList[];
 
+    
+    public void GerarRaking(){
+    
+    }
+    
+    public void Avisar(){
+    
+    }
     /**
      * @param args the command line arguments
      */
