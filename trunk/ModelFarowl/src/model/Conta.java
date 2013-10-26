@@ -4,11 +4,13 @@
  */
 package model;
 
+import java.util.Objects;
+
 /**
  *
  * @author CasaPc
  */
-public abstract class Conta {
+public abstract class Conta  implements Comparable {
     
     private String nome;
     private String login;
@@ -22,7 +24,8 @@ public abstract class Conta {
      * @param senha
      * @param email
      */
-    public Conta(String nome, String login, int senha, String email) {
+    public Conta(String nome, String login, int senha, String email){
+        
         this.nome = nome;
         this.login = login;
         this.senha = senha;
@@ -115,5 +118,54 @@ public abstract class Conta {
         return "Conta{" + "nome=" + nome + '}';
     }
 
+       /**
+     *
+     * @param t
+     * @return
+     */
+    @Override
+      public int compareTo(Object t) {
+      return nome.compareTo(((Conta)t).getLogin());
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    /**
+     *
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Conta other = (Conta) obj;
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        return true;
+    }
+       
+    
+      /**
+     *
+     * @param t
+     * @return
+     */
+    public boolean compareEmail(Conta t) {
+      return email.equals(((Conta)t).getLogin());
+    }
     
 }

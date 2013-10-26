@@ -2,22 +2,20 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
-
-import java.util.EventObject;
+package Exceptions;
 
 /**
  *
  * @author CasaPc
  */
-public class AvisoEvent extends EventObject{
+public class UsuarioJaExisteException extends Exception{
 
     /**
      *
-     * @param o
+     * @param string
      */
-    public AvisoEvent(Object o) {
-        super(o);
+    public UsuarioJaExisteException(String string) {
+        super(string);
     }
     
 }
