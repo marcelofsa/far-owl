@@ -15,6 +15,7 @@ public class Controller {
     
     private String BlackList[];
     private ArrayList<Conta> contas=new ArrayList();
+    private ArrayList<Conta> contasDeletadas=new ArrayList();
     
     /**
      *
@@ -27,14 +28,21 @@ public class Controller {
      * @throws UsuarioJaExisteException
      * @throws SenhaincompativelException
      */
-    public void CadastrarUsuario(String nome, String login, int senha,int confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException{
+    public void CadastrarUsuario(String nome, String login, int senha,int confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException{
     Conta c=new Comum(nome,login,senha,email); 
     
-    for(int i=0; i<contas.size(); i++){
+    
+    
+    for(int i=0; i<contas.size(); i++){  //verifica emails cadastrados
     if(contas.get(i).compareEmail(c)){
         throw new EmailJaCadastradoException("Já existe cadastro com esse email");
     }
     }
+    
+    if(contasDeletadas.contains(c)){  //
+       throw new ContaDeletadaException("Esta conta foi deletada");
+    }
+    
     
     if(senha==confirmaSenha){
         
