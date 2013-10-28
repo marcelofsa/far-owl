@@ -10,7 +10,7 @@ import java.awt.Image;
  *
  * @author CasaPc
  */
-class Comentario {
+public class Comentario {
     
     String Texto;
     Image foto;
