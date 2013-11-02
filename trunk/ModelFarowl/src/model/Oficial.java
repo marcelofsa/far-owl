@@ -9,6 +9,8 @@ package model;
  * @author CasaPc
  */
 public class Oficial extends Usuario{
+    
+    
 
     /**
      *
