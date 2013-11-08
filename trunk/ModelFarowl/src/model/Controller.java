@@ -7,6 +7,7 @@ package model;
 import Exceptions.*;
 import java.util.ArrayList;
 
+
 /**
  *
  * @author CasaPc
@@ -17,6 +18,7 @@ public class Controller {
     private ArrayList<Conta> contas=new ArrayList();
     private ArrayList<Conta> contasDeletadas=new ArrayList();
     private Conta logado;
+    
     
     /**
      *
