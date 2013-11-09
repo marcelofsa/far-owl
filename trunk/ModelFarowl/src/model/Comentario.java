@@ -14,5 +14,20 @@ public class Comentario {
     
     String Texto;
     Image foto;
+    private int ID;
+
+    public Comentario(String Texto, Image foto) {
+        this.Texto = Texto;
+        this.foto = foto;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    
     
 }
