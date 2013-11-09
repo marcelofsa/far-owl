@@ -16,6 +16,15 @@ public abstract class Conta  implements Comparable {
     private String login;
     private int senha;
     private String email;
+    private int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     /**
      *

@@ -19,6 +19,15 @@ public class Notificacao {
     private boolean status;
     private ArrayList <Usuario> apoios;
     private ArrayList <Comentario> comentarios;
+    private int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public Notificacao(String texto, ImageIcon foto, String tag) {
         this.texto = texto;
