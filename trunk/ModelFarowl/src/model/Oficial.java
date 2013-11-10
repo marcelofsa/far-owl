@@ -10,8 +10,9 @@ package model;
  */
 public class Oficial extends Usuario{
     
-    
-
+    private String endereco;
+    private int CNPJ;
+    private String setorAtuacao;
     /**
      *
      * @param nome
@@ -19,8 +20,10 @@ public class Oficial extends Usuario{
      * @param senha
      * @param email
      */
-    public Oficial(String nome, String login, int senha, String email) {
+    public Oficial(String nome, String login, String senha, String email) {
         super(nome, login, senha, email);
     }
-    
+        public void EditarPerfil(){
+
+}
 }

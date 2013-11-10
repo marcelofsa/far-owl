@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package model;
 
 import org.junit.After;
@@ -44,8 +46,8 @@ public class ControllerTest {
         System.out.println("CadastrarUsuario");
         String nome = "";
         String login = "";
-        int senha = 0;
-        int confirmaSenha = 0;
+        String senha = "";
+        String confirmaSenha = "";
         String email = "";
         String confirmaEmail = "";
         Controller instance = new Controller();
@@ -145,4 +147,5 @@ public class ControllerTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
 }

@@ -14,7 +14,7 @@ public abstract class Conta  implements Comparable {
     
     private String nome;
     private String login;
-    private int senha;
+    private String senha;
     private String email;
     private int ID;
 
@@ -33,7 +33,7 @@ public abstract class Conta  implements Comparable {
      * @param senha
      * @param email
      */
-    public Conta(String nome, String login, int senha, String email){
+    public Conta(String nome, String login, String senha, String email){
         
         this.nome = nome;
         this.login = login;
@@ -90,7 +90,7 @@ public abstract class Conta  implements Comparable {
      *
      * @return
      */
-    public int getSenha() {
+    public String getSenha() {
         return senha;
     }
 
@@ -98,7 +98,7 @@ public abstract class Conta  implements Comparable {
      *
      * @param senha
      */
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 

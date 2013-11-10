@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package model;
 
 import java.awt.Image;
@@ -47,6 +49,176 @@ public class UsuarioTest {
         Comentario expResult = null;
         Comentario result = instance.Comentar();
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of adcionarFotoVideo method, of class Usuario.
+     */
+    @Test
+    public void testAdcionarFotoVideo() {
+        System.out.println("adcionarFotoVideo");
+        Usuario instance = null;
+        instance.adcionarFotoVideo();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of Ordenarnotificacoes method, of class Usuario.
+     */
+    @Test
+    public void testOrdenarnotificacoes() {
+        System.out.println("Ordenarnotificacoes");
+        Usuario instance = null;
+        instance.Ordenarnotificacoes();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of RecuperarSenha method, of class Usuario.
+     */
+    @Test
+    public void testRecuperarSenha() {
+        System.out.println("RecuperarSenha");
+        Usuario instance = null;
+        instance.RecuperarSenha();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of MudarIdioma method, of class Usuario.
+     */
+    @Test
+    public void testMudarIdioma() {
+        System.out.println("MudarIdioma");
+        Usuario instance = null;
+        instance.MudarIdioma();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of BuscarNotificacao method, of class Usuario.
+     */
+    @Test
+    public void testBuscarNotificacao() {
+        System.out.println("BuscarNotificacao");
+        Usuario instance = null;
+        instance.BuscarNotificacao();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of AcessarMenu method, of class Usuario.
+     */
+    @Test
+    public void testAcessarMenu() {
+        System.out.println("AcessarMenu");
+        Usuario instance = null;
+        instance.AcessarMenu();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of VisualizarComentario method, of class Usuario.
+     */
+    @Test
+    public void testVisualizarComentario() {
+        System.out.println("VisualizarComentario");
+        Usuario instance = null;
+        Comentario expResult = null;
+        Comentario result = instance.VisualizarComentario();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of VisualizarPerfil method, of class Usuario.
+     */
+    @Test
+    public void testVisualizarPerfil() {
+        System.out.println("VisualizarPerfil");
+        Usuario instance = null;
+        instance.VisualizarPerfil();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of AlterarSenha method, of class Usuario.
+     */
+    @Test
+    public void testAlterarSenha() {
+        System.out.println("AlterarSenha");
+        Usuario instance = null;
+        instance.AlterarSenha();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of VisualizarRaking method, of class Usuario.
+     */
+    @Test
+    public void testVisualizarRaking() {
+        System.out.println("VisualizarRaking");
+        Usuario instance = null;
+        instance.VisualizarRaking();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of SobreApp method, of class Usuario.
+     */
+    @Test
+    public void testSobreApp() {
+        System.out.println("SobreApp");
+        Usuario instance = null;
+        instance.SobreApp();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of VisualizarMapa method, of class Usuario.
+     */
+    @Test
+    public void testVisualizarMapa() {
+        System.out.println("VisualizarMapa");
+        Usuario instance = null;
+        instance.VisualizarMapa();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of VisualizarAvisos method, of class Usuario.
+     */
+    @Test
+    public void testVisualizarAvisos() {
+        System.out.println("VisualizarAvisos");
+        Usuario instance = null;
+        instance.VisualizarAvisos();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of Sair method, of class Usuario.
+     */
+    @Test
+    public void testSair() {
+        System.out.println("Sair");
+        Usuario instance = null;
+        instance.Sair();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -162,7 +334,8 @@ public class UsuarioTest {
     public class UsuarioImpl extends Usuario {
 
         public UsuarioImpl() {
-            super("", "", 0, "");
+            super("", "", "", "");
         }
     }
+    
 }

@@ -10,13 +10,13 @@ import java.awt.Image;
  *
  * @author CasaPc
  */
-public abstract class Usuario extends Conta{
-    
+public abstract class Usuario extends Conta {
+
     private String cidade;
     private String Estado;
     private String pais;
     private Image foto;
-    
+
     /**
      *
      * @param nome
@@ -24,7 +24,7 @@ public abstract class Usuario extends Conta{
      * @param senha
      * @param email
      */
-    public Usuario(String nome, String login, int senha, String email) {
+    public Usuario(String nome, String login, String senha, String email) {
         super(nome, login, senha, email);
     }
 
@@ -32,13 +32,77 @@ public abstract class Usuario extends Conta{
      *
      * @return
      */
-    public Comentario Comentar(){
+    public Comentario Comentar() {
         return null;
-    
-    }
-    
 
-    
+    }
+
+    public Comum cadastrarUsuario(String nome, String login, String senha,String ConfirmaSenha, String email, String ConfirmaEmail) {
+     if(email.equals(ConfirmaEmail)){
+     if(senha.equals(ConfirmaSenha)){
+     return new Comum(nome, login, senha, email);
+     }
+     }
+        return null;
+    }
+
+    public void adcionarFotoVideo() {
+
+    }
+
+    public void Ordenarnotificacoes() {
+
+    }
+
+    public void RecuperarSenha() {
+
+    }
+
+    public void MudarIdioma() {
+
+    }
+
+    public void BuscarNotificacao() {
+
+    }
+
+    public void AcessarMenu() {
+
+    }
+
+    public Comentario VisualizarComentario() {
+        return null;
+
+    }
+
+    public void VisualizarPerfil() {
+
+    }
+
+    public void AlterarSenha() {
+
+    }
+
+    public void VisualizarRaking() {
+
+    }
+
+    public void SobreApp() {
+
+    }
+
+    public void VisualizarMapa() {
+
+    }
+
+    public void VisualizarAvisos() {
+
+    }
+
+    public void Sair() {
+
+    }
+
     /**
      *
      * @return
@@ -102,7 +166,7 @@ public abstract class Usuario extends Conta{
     public void setFoto(Image foto) {
         this.foto = foto;
     }
-    
-    
-    
+
+ 
+
 }
