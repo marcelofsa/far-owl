@@ -8,8 +8,8 @@ package model;
  *
  * @author CasaPc
  */
-public class Comum extends Usuario{
-    
+public class Comum extends Usuario {
+
     private String sobrenome;
 
     /**
@@ -19,12 +19,64 @@ public class Comum extends Usuario{
      * @param senha
      * @param email
      */
-    public Comum(String nome, String login, int senha, String email) {
+    public Comum(String nome, String login, String senha, String email) {
         super(nome, login, senha, email);
     }
 
     void setSobrenome(String sobrenome) {
-        this.sobrenome=sobrenome;
+        this.sobrenome = sobrenome;
+    }
+
+    public Notificacao notificar() {
+        return null;
+
+    }
+
+    public void AdcionarFotoVideo() {
+
+    }
+
+    public void denunciarComoImpropria() {
+
+    }
+
+    public void excluirNotificacao() {
+
+    }
+
+    public void modoAnonimo() {
+
+    }
+
+    public void Apoiar() {
+
+    }
+
+    public void desApoiar() {
+
+    }
+
+    public void ConectarFacebook() {
+
+    }
+
+    public void ConectarTwitter() {
+
+    }
+
+    public void ConectarGooglePlus() {
+
+    }
+
+    public void VisualizarTermos() {
+
     }
     
+    public void EditarPerfil(){
+
+}
+    
+           public void OcultarPontuacao(){
+
+}
 }

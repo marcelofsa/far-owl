@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package model;
 
 import org.junit.After;
@@ -34,6 +36,33 @@ public class ContaTest {
     
     @After
     public void tearDown() {
+    }
+
+    /**
+     * Test of getID method, of class Conta.
+     */
+    @Test
+    public void testGetID() {
+        System.out.println("getID");
+        Conta instance = null;
+        int expResult = 0;
+        int result = instance.getID();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setID method, of class Conta.
+     */
+    @Test
+    public void testSetID() {
+        System.out.println("setID");
+        int ID = 0;
+        Conta instance = null;
+        instance.setID(ID);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -113,8 +142,8 @@ public class ContaTest {
     public void testGetSenha() {
         System.out.println("getSenha");
         Conta instance = null;
-        int expResult = 0;
-        int result = instance.getSenha();
+        String expResult = "";
+        String result = instance.getSenha();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -126,7 +155,7 @@ public class ContaTest {
     @Test
     public void testSetSenha() {
         System.out.println("setSenha");
-        int senha = 0;
+        String senha = "";
         Conta instance = null;
         instance.setSenha(senha);
         // TODO review the generated test code and remove the default call to fail.
@@ -236,7 +265,8 @@ public class ContaTest {
     public class ContaImpl extends Conta {
 
         public ContaImpl() {
-            super("", "", 0, "");
+            super("", "", "", "");
         }
     }
+    
 }

@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package model;
 
 import org.junit.After;
@@ -44,8 +46,8 @@ public class AdministradorTest {
         System.out.println("CriarAdmin");
         String nome = "";
         String login = "";
-        int senha = 0;
-        int confirmacaoSenha = 0;
+        String senha = "";
+        String confirmacaoSenha = "";
         String email = "";
         String confirmacaoEmail = "";
         Administrador instance = null;
@@ -64,8 +66,8 @@ public class AdministradorTest {
         System.out.println("CriarOficial");
         String nome = "";
         String login = "";
-        int senha = 0;
-        int confirmacaoSenha = 0;
+        String senha = "";
+        String confirmacaoSenha = "";
         String email = "";
         String confirmacaoEmail = "";
         String SetorAtuação = "";
@@ -161,4 +163,5 @@ public class AdministradorTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+    
 }

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class Controller {
     
     private String BlackList[];
-    private ArrayList<Conta> contas=new ArrayList();
-    private ArrayList<Conta> contasDeletadas=new ArrayList();
+    private final ArrayList<Conta> contas=new ArrayList();
+    private final ArrayList<Conta> contasDeletadas=new ArrayList();
     private Conta logado;
     
     
@@ -30,9 +30,11 @@ public class Controller {
      * @param confirmaEmail
      * @throws UsuarioJaExisteException
      * @throws SenhaincompativelException
+     * @throws Exceptions.EmailJaCadastradoException
+     * @throws Exceptions.ContaDeletadaException
      */
-    public void CadastrarUsuario(String nome, String login, int senha,int confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException{
-    Conta c=new Comum(nome,login,senha,email); 
+    public void CadastrarUsuario(String nome, String login, String senha,String confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException{
+    Comum c=new Comum(nome,login,senha,email); 
     
     
     
@@ -47,7 +49,7 @@ public class Controller {
     }
     
     
-    if(senha==confirmaSenha){
+    if(senha == null ? confirmaSenha == null : senha.equals(confirmaSenha)){
         
         
     if(contas.contains(c)){

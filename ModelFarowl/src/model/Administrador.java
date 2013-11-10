@@ -17,7 +17,7 @@ public class Administrador extends Conta{
      * @param senha
      * @param email
      */
-    public Administrador(String nome, String login, int senha, String email) {
+    public Administrador(String nome, String login, String senha, String email) {
         super(nome, login, senha, email);
     }
     
@@ -31,9 +31,9 @@ public class Administrador extends Conta{
      * @param confirmacaoEmail
      * @return
      */
-    public Administrador CriarAdmin(String nome, String login, int senha, int confirmacaoSenha, String email, String confirmacaoEmail){
+    public Administrador CriarAdmin(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail){
         
-        if(senha==confirmacaoSenha && email.equals(confirmacaoEmail)){
+        if(senha.equals(confirmacaoSenha) && email.equals(confirmacaoEmail)){
         return new Administrador(nome, login, senha, email);
         }
         else {
@@ -53,7 +53,7 @@ public class Administrador extends Conta{
      * @param CNPJ
      * @return
      */
-    public Oficial CriarOficial(String nome, String login, int senha, int confirmacaoSenha, String email, String confirmacaoEmail, String SetorAtuação, int CNPJ){
+    public Oficial CriarOficial(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail, String SetorAtuação, int CNPJ){
         
         if(senha==confirmacaoSenha && email.equals(confirmacaoEmail)){
         return new Oficial(nome, login, senha, email);
