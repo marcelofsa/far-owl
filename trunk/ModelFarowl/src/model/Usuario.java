@@ -37,14 +37,6 @@ public abstract class Usuario extends Conta {
 
     }
 
-    public Comum cadastrarUsuario(String nome, String login, String senha,String ConfirmaSenha, String email, String ConfirmaEmail) {
-     if(email.equals(ConfirmaEmail)){
-     if(senha.equals(ConfirmaSenha)){
-     return new Comum(nome, login, senha, email);
-     }
-     }
-        return null;
-    }
 
     public void adcionarFotoVideo() {
 
