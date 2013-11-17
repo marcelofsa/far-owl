@@ -50,9 +50,9 @@ public class Controller {
     
     
     if(senha == null ? confirmaSenha == null : senha.equals(confirmaSenha)){
+     if(email == null ? confirmaEmail == null : email.equals(confirmaEmail)){
         
-        
-    if(contas.contains(c)){
+    if(!contas.contains(c)){
             contas.add(c);
             logado=c;
     }
@@ -60,8 +60,18 @@ public class Controller {
             throw new UsuarioJaExisteException("Este Login já esta sendo utilizado por outro Usuario");
         }
         }else {
+            throw new SenhaincompativelException("O email e sua confirmação diferem");
+        } 
+    }
+    else {
             throw new SenhaincompativelException("A senha e sua confirmação diferem");
         }
+    }
+    
+    public Conta fazerLogin(String nome, String senha){
+    
+    return null;
+    
     }
     
     public void criarPerfil(String sobrenome,String estado, String cidade, String pais){
@@ -113,6 +123,23 @@ public class Controller {
      */
     public boolean verificarEmail(){
         return false;
+    
+    }
+    
+    public void recuperarSenha(String email){
+    
+    
+    }
+    
+    public void conectarTwitter(){
+    
+    }
+    
+    public void conectarFacebook(){
+    
+    }
+    
+    public void conectarGooglePlus(){
     
     }
     /**
