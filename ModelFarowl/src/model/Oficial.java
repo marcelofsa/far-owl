@@ -23,7 +23,11 @@ public class Oficial extends Usuario{
     public Oficial(String nome, String login, String senha, String email) {
         super(nome, login, senha, email);
     }
-        public void EditarPerfil(){
+
+    /**
+     *
+     */
+    public void EditarPerfil(){
 
 }
 }

@@ -23,60 +23,109 @@ public class Comum extends Usuario {
         super(nome, login, senha, email);
     }
 
+    /**
+     *
+     * @param nome
+     * @param senha
+     */
+    public Comum(String nome, String senha) {
+       super(nome,senha);
+    }
+
     void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
     }
 
+    /**
+     *
+     * @return
+     */
     public Notificacao notificar() {
         return null;
 
     }
 
+    /**
+     *
+     */
     public void AdcionarFotoVideo() {
 
     }
 
+    /**
+     *
+     */
     public void denunciarComoImpropria() {
 
     }
 
+    /**
+     *
+     */
     public void excluirNotificacao() {
 
     }
 
+    /**
+     *
+     */
     public void modoAnonimo() {
 
     }
 
+    /**
+     *
+     */
     public void Apoiar() {
 
     }
 
+    /**
+     *
+     */
     public void desApoiar() {
 
     }
 
+    /**
+     *
+     */
     public void ConectarFacebook() {
 
     }
 
+    /**
+     *
+     */
     public void ConectarTwitter() {
 
     }
 
+    /**
+     *
+     */
     public void ConectarGooglePlus() {
 
     }
 
+    /**
+     *
+     */
     public void VisualizarTermos() {
 
     }
     
+    /**
+     *
+     */
     public void EditarPerfil(){
 
 }
-    
-           public void OcultarPontuacao(){
+
+    /**
+     *
+     */
+    public void OcultarPontuacao(){
 
 }
 }

@@ -30,6 +30,27 @@ public abstract class Usuario extends Conta {
 
     /**
      *
+     * @param nome
+     * @param senha
+     */
+    public Usuario(String nome, String senha) {
+        super(nome, senha);
+    }
+    
+    /**
+     *
+     * @param nome
+     * @param cidade
+     * @param estado
+     * @param pais
+     */
+    public void editarPerfil(String nome, String cidade, String estado, String pais){
+    
+    
+    
+    }
+    /**
+     *
      * @return
      */
     public Comentario Comentar() {
@@ -37,60 +58,102 @@ public abstract class Usuario extends Conta {
 
     }
 
-
+    /**
+     *
+     */
     public void adcionarFotoVideo() {
 
     }
 
+    /**
+     *
+     */
     public void Ordenarnotificacoes() {
 
     }
 
+    /**
+     *
+     */
     public void RecuperarSenha() {
 
     }
 
+    /**
+     *
+     */
     public void MudarIdioma() {
 
     }
 
+    /**
+     *
+     */
     public void BuscarNotificacao() {
 
     }
 
+    /**
+     *
+     */
     public void AcessarMenu() {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public Comentario VisualizarComentario() {
         return null;
 
     }
 
+    /**
+     *
+     */
     public void VisualizarPerfil() {
 
     }
 
+    /**
+     *
+     */
     public void AlterarSenha() {
 
     }
 
+    /**
+     *
+     */
     public void VisualizarRaking() {
 
     }
 
+    /**
+     *
+     */
     public void SobreApp() {
 
     }
 
+    /**
+     *
+     */
     public void VisualizarMapa() {
 
     }
 
+    /**
+     *
+     */
     public void VisualizarAvisos() {
 
     }
 
+    /**
+     *
+     */
     public void Sair() {
 
     }
