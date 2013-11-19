@@ -18,10 +18,18 @@ public abstract class Conta  implements Comparable {
     private String email;
     private int ID;
 
+    /**
+     *
+     * @return
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     *
+     * @param ID
+     */
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -41,6 +49,16 @@ public abstract class Conta  implements Comparable {
         this.email = email;
     }
     
+    /**
+     *
+     * @param login
+     * @param senha
+     */
+    public Conta( String login, String senha){
+        
+        this.login = login;
+        this.senha = senha;
+    }
     
     
     /**
@@ -174,7 +192,7 @@ public abstract class Conta  implements Comparable {
      * @return
      */
     public boolean compareEmail(Conta t) {
-      return email.equals(((Conta)t).getLogin());
+      return email.equals(t.getLogin());
     }
     
 }

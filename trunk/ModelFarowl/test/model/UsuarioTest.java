@@ -337,5 +337,21 @@ public class UsuarioTest {
             super("", "", "", "");
         }
     }
+
+    /**
+     * Test of editarPerfil method, of class Usuario.
+     */
+    @org.junit.Test
+    public void testEditarPerfil() {
+        System.out.println("editarPerfil");
+        String nome = "";
+        String cidade = "";
+        String estado = "";
+        String pais = "";
+        Usuario instance = null;
+        instance.editarPerfil(nome, cidade, estado, pais);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
     
 }
