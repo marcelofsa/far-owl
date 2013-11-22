@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.io.File;
 import java.util.Objects;
 
 /**
@@ -20,7 +21,7 @@ public abstract class Conta  implements Comparable {
 
     /**
      *
-     * @return
+     * @return  retorna o ID 
      */
     public int getID() {
         return ID;
@@ -193,6 +194,46 @@ public abstract class Conta  implements Comparable {
      */
     public boolean compareEmail(Conta t) {
       return email.equals(t.getLogin());
+    }
+
+    void mudarStatus(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void notificar(String texto, File midia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void apoiar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void notificarAnonimo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void comentarAnonimo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void buscarNotificacao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void desapoiar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void excluirNotificacao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void comentar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void comentar(String texto, File midia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -6,6 +6,7 @@
 
 package model;
 
+import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author CasaPc
+ * @author Lucas
  */
 public class ControllerTest {
     
@@ -39,11 +40,11 @@ public class ControllerTest {
     }
 
     /**
-     * Test of CadastrarUsuario method, of class Controller.
+     * Test of cadastrarUsuario method, of class Controller.
      */
     @Test
     public void testCadastrarUsuario() throws Exception {
-        System.out.println("CadastrarUsuario");
+        System.out.println("cadastrarUsuario");
         String nome = "";
         String login = "";
         String senha = "";
@@ -51,7 +52,23 @@ public class ControllerTest {
         String email = "";
         String confirmaEmail = "";
         Controller instance = new Controller();
-        instance.CadastrarUsuario(nome, login, senha, confirmaSenha, email, confirmaEmail);
+        instance.cadastrarUsuario(nome, login, senha, confirmaSenha, email, confirmaEmail);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of fazerLogin method, of class Controller.
+     */
+    @Test
+    public void testFazerLogin() {
+        System.out.println("fazerLogin");
+        String nome = "";
+        String senha = "";
+        Controller instance = new Controller();
+        Conta expResult = null;
+        Conta result = instance.fazerLogin(nome, senha);
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -73,50 +90,50 @@ public class ControllerTest {
     }
 
     /**
-     * Test of GerarRaking method, of class Controller.
+     * Test of gerarRaking method, of class Controller.
      */
     @Test
     public void testGerarRaking() {
-        System.out.println("GerarRaking");
+        System.out.println("gerarRaking");
         Controller instance = new Controller();
-        instance.GerarRaking();
+        instance.gerarRaking();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of Avisar method, of class Controller.
+     * Test of avisar method, of class Controller.
      */
     @Test
     public void testAvisar() {
-        System.out.println("Avisar");
+        System.out.println("avisar");
         Controller instance = new Controller();
-        instance.Avisar();
+        instance.avisar();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of EncriptarSenha method, of class Controller.
+     * Test of encriptarSenha method, of class Controller.
      */
     @Test
     public void testEncriptarSenha() {
-        System.out.println("EncriptarSenha");
+        System.out.println("encriptarSenha");
         Controller instance = new Controller();
-        instance.EncriptarSenha();
+        instance.encriptarSenha();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of FiltrarPost method, of class Controller.
+     * Test of filtrarPost method, of class Controller.
      */
     @Test
     public void testFiltrarPost() {
-        System.out.println("FiltrarPost");
+        System.out.println("filtrarPost");
         Controller instance = new Controller();
         boolean expResult = false;
-        boolean result = instance.FiltrarPost();
+        boolean result = instance.filtrarPost();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -126,39 +143,12 @@ public class ControllerTest {
      * Test of verificarEmail method, of class Controller.
      */
     @Test
-    public void testVerificarEmail() {
+    public void testVerificarEmail_String() {
         System.out.println("verificarEmail");
+        String email = "";
         Controller instance = new Controller();
         boolean expResult = false;
-        boolean result = instance.verificarEmail();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of main method, of class Controller.
-     */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        Controller.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of fazerLogin method, of class Controller.
-     */
-    @org.junit.Test
-    public void testFazerLogin() {
-        System.out.println("fazerLogin");
-        String nome = "";
-        String senha = "";
-        Controller instance = new Controller();
-        Conta expResult = null;
-        Conta result = instance.fazerLogin(nome, senha);
+        boolean result = instance.verificarEmail(email);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -167,7 +157,7 @@ public class ControllerTest {
     /**
      * Test of verificarLogin method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVerificarLogin() {
         System.out.println("verificarLogin");
         String email = "";
@@ -182,7 +172,7 @@ public class ControllerTest {
     /**
      * Test of recuperarSenha method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testRecuperarSenha() {
         System.out.println("recuperarSenha");
         String email = "";
@@ -195,7 +185,7 @@ public class ControllerTest {
     /**
      * Test of conectarTwitter method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testConectarTwitter() {
         System.out.println("conectarTwitter");
         Controller instance = new Controller();
@@ -207,7 +197,7 @@ public class ControllerTest {
     /**
      * Test of conectarFacebook method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testConectarFacebook() {
         System.out.println("conectarFacebook");
         Controller instance = new Controller();
@@ -219,7 +209,7 @@ public class ControllerTest {
     /**
      * Test of conectarGooglePlus method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testConectarGooglePlus() {
         System.out.println("conectarGooglePlus");
         Controller instance = new Controller();
@@ -231,7 +221,7 @@ public class ControllerTest {
     /**
      * Test of adcionarPublicidade method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testAdcionarPublicidade() {
         System.out.println("adcionarPublicidade");
         Controller instance = new Controller();
@@ -243,7 +233,7 @@ public class ControllerTest {
     /**
      * Test of excluirNotificacao method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testExcluirNotificacao() {
         System.out.println("excluirNotificacao");
         Controller instance = new Controller();
@@ -255,7 +245,7 @@ public class ControllerTest {
     /**
      * Test of modificarPublicidade method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testModificarPublicidade() {
         System.out.println("modificarPublicidade");
         Controller instance = new Controller();
@@ -267,7 +257,7 @@ public class ControllerTest {
     /**
      * Test of visualizarAnonimo method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVisualizarAnonimo() {
         System.out.println("visualizarAnonimo");
         Controller instance = new Controller();
@@ -279,7 +269,7 @@ public class ControllerTest {
     /**
      * Test of excluirConta method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testExcluirConta() {
         System.out.println("excluirConta");
         Controller instance = new Controller();
@@ -291,7 +281,7 @@ public class ControllerTest {
     /**
      * Test of visualizarDenuncias method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVisualizarDenuncias() {
         System.out.println("visualizarDenuncias");
         Controller instance = new Controller();
@@ -303,7 +293,7 @@ public class ControllerTest {
     /**
      * Test of bloqDesboqUser method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testBloqDesboqUser() {
         System.out.println("bloqDesboqUser");
         Controller instance = new Controller();
@@ -315,7 +305,7 @@ public class ControllerTest {
     /**
      * Test of editarPerfilComun method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testEditarPerfilComun() {
         System.out.println("editarPerfilComun");
         Controller instance = new Controller();
@@ -327,11 +317,13 @@ public class ControllerTest {
     /**
      * Test of notificar method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testNotificar() {
         System.out.println("notificar");
+        String texto = "";
+        File midia = null;
         Controller instance = new Controller();
-        instance.notificar();
+        instance.notificar(texto, midia);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -339,7 +331,7 @@ public class ControllerTest {
     /**
      * Test of denunciarImpropria method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testDenunciarImpropria() {
         System.out.println("denunciarImpropria");
         Controller instance = new Controller();
@@ -349,25 +341,37 @@ public class ControllerTest {
     }
 
     /**
-     * Test of modoAnonimo method, of class Controller.
+     * Test of notificarAnonimo method, of class Controller.
      */
-    @org.junit.Test
-    public void testModoAnonimo() {
-        System.out.println("modoAnonimo");
+    @Test
+    public void testNotificarAnonimo() {
+        System.out.println("notificarAnonimo");
         Controller instance = new Controller();
-        instance.modoAnonimo();
+        instance.notificarAnonimo();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of apoir method, of class Controller.
+     * Test of comentarAnonimo method, of class Controller.
      */
-    @org.junit.Test
-    public void testApoir() {
-        System.out.println("apoir");
+    @Test
+    public void testComentarAnonimo() {
+        System.out.println("comentarAnonimo");
         Controller instance = new Controller();
-        instance.apoir();
+        instance.comentarAnonimo();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of apoiar method, of class Controller.
+     */
+    @Test
+    public void testApoiar() {
+        System.out.println("apoiar");
+        Controller instance = new Controller();
+        instance.apoiar();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -375,7 +379,7 @@ public class ControllerTest {
     /**
      * Test of desapoiar method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testDesapoiar() {
         System.out.println("desapoiar");
         Controller instance = new Controller();
@@ -387,7 +391,7 @@ public class ControllerTest {
     /**
      * Test of ocultarPontuacao method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testOcultarPontuacao() {
         System.out.println("ocultarPontuacao");
         Controller instance = new Controller();
@@ -399,7 +403,7 @@ public class ControllerTest {
     /**
      * Test of mudarStatus method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testMudarStatus() {
         System.out.println("mudarStatus");
         Controller instance = new Controller();
@@ -411,11 +415,13 @@ public class ControllerTest {
     /**
      * Test of comentar method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testComentar() {
         System.out.println("comentar");
+        String texto = "";
+        File midia = null;
         Controller instance = new Controller();
-        instance.comentar();
+        instance.comentar(texto, midia);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -423,7 +429,7 @@ public class ControllerTest {
     /**
      * Test of ordenarNotificacoes method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testOrdenarNotificacoes() {
         System.out.println("ordenarNotificacoes");
         Controller instance = new Controller();
@@ -435,7 +441,7 @@ public class ControllerTest {
     /**
      * Test of mudarIdioma method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testMudarIdioma() {
         System.out.println("mudarIdioma");
         Controller instance = new Controller();
@@ -447,7 +453,7 @@ public class ControllerTest {
     /**
      * Test of buscarNotificacao method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testBuscarNotificacao() {
         System.out.println("buscarNotificacao");
         Controller instance = new Controller();
@@ -459,7 +465,7 @@ public class ControllerTest {
     /**
      * Test of visualizarComentario method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVisualizarComentario() {
         System.out.println("visualizarComentario");
         Controller instance = new Controller();
@@ -471,7 +477,7 @@ public class ControllerTest {
     /**
      * Test of visualizarPerfil method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVisualizarPerfil() {
         System.out.println("visualizarPerfil");
         Controller instance = new Controller();
@@ -483,7 +489,7 @@ public class ControllerTest {
     /**
      * Test of alterarSenha method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testAlterarSenha() {
         System.out.println("alterarSenha");
         Controller instance = new Controller();
@@ -495,7 +501,7 @@ public class ControllerTest {
     /**
      * Test of visualizarRaking method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVisualizarRaking() {
         System.out.println("visualizarRaking");
         Controller instance = new Controller();
@@ -507,7 +513,7 @@ public class ControllerTest {
     /**
      * Test of sobre method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testSobre() {
         System.out.println("sobre");
         Controller instance = new Controller();
@@ -519,7 +525,7 @@ public class ControllerTest {
     /**
      * Test of visualizarMapa method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVisualizarMapa() {
         System.out.println("visualizarMapa");
         Controller instance = new Controller();
@@ -531,7 +537,7 @@ public class ControllerTest {
     /**
      * Test of visualizarAvisos method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testVisualizarAvisos() {
         System.out.println("visualizarAvisos");
         Controller instance = new Controller();
@@ -543,7 +549,7 @@ public class ControllerTest {
     /**
      * Test of sair method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testSair() {
         System.out.println("sair");
         Controller instance = new Controller();
@@ -555,7 +561,7 @@ public class ControllerTest {
     /**
      * Test of criarAdmin method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testCriarAdmin() {
         System.out.println("criarAdmin");
         String nome = "";
@@ -575,7 +581,7 @@ public class ControllerTest {
     /**
      * Test of criarOficial method, of class Controller.
      */
-    @org.junit.Test
+    @Test
     public void testCriarOficial() {
         System.out.println("criarOficial");
         String nome = "";
@@ -584,9 +590,38 @@ public class ControllerTest {
         String confirmaSenha = "";
         String email = "";
         String confirmaEmail = "";
+        String endereco = "";
+        int CNPJ = 0;
+        String setorAtuacao = "";
         Controller instance = new Controller();
         Oficial expResult = null;
-        Oficial result = instance.criarOficial(nome, login, senha, confirmaSenha, email, confirmaEmail);
+        Oficial result = instance.criarOficial(nome, login, senha, confirmaSenha, email, confirmaEmail, endereco, CNPJ, setorAtuacao);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of main method, of class Controller.
+     */
+    @Test
+    public void testMain() {
+        System.out.println("main");
+        String[] args = null;
+        Controller.main(args);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of verificarEmail method, of class Controller.
+     */
+    @Test
+    public void testVerificarEmail_0args() {
+        System.out.println("verificarEmail");
+        Controller instance = new Controller();
+        boolean expResult = false;
+        boolean result = instance.verificarEmail();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

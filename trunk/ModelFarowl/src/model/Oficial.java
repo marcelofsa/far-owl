@@ -20,7 +20,7 @@ public class Oficial extends Usuario{
      * @param senha
      * @param email
      */
-    public Oficial(String nome, String login, String senha, String email) {
+    public Oficial(String nome, String login, String senha, String email, String endereco, int CNPJ, String setorAtuacao) {
         super(nome, login, senha, email);
     }
 

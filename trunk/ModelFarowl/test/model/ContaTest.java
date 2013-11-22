@@ -6,6 +6,7 @@
 
 package model;
 
+import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -267,6 +268,131 @@ public class ContaTest {
         public ContaImpl() {
             super("", "", "", "");
         }
+    }
+
+    /**
+     * Test of mudarStatus method, of class Conta.
+     */
+    @Test
+    public void testMudarStatus() {
+        System.out.println("mudarStatus");
+        boolean b = false;
+        Conta instance = null;
+        instance.mudarStatus(b);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of notificar method, of class Conta.
+     */
+    @Test
+    public void testNotificar() {
+        System.out.println("notificar");
+        String texto = "";
+        File midia = null;
+        Conta instance = null;
+        instance.notificar(texto, midia);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of apoiar method, of class Conta.
+     */
+    @Test
+    public void testApoiar() {
+        System.out.println("apoiar");
+        Conta instance = null;
+        instance.apoiar();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of notificarAnonimo method, of class Conta.
+     */
+    @Test
+    public void testNotificarAnonimo() {
+        System.out.println("notificarAnonimo");
+        Conta instance = null;
+        instance.notificarAnonimo();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of comentarAnonimo method, of class Conta.
+     */
+    @Test
+    public void testComentarAnonimo() {
+        System.out.println("comentarAnonimo");
+        Conta instance = null;
+        instance.comentarAnonimo();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of buscarNotificacao method, of class Conta.
+     */
+    @Test
+    public void testBuscarNotificacao() {
+        System.out.println("buscarNotificacao");
+        Conta instance = null;
+        instance.buscarNotificacao();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of desapoiar method, of class Conta.
+     */
+    @Test
+    public void testDesapoiar() {
+        System.out.println("desapoiar");
+        Conta instance = null;
+        instance.desapoiar();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of excluirNotificacao method, of class Conta.
+     */
+    @Test
+    public void testExcluirNotificacao() {
+        System.out.println("excluirNotificacao");
+        Conta instance = null;
+        instance.excluirNotificacao();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of comentar method, of class Conta.
+     */
+    @Test
+    public void testComentar_0args() {
+        System.out.println("comentar");
+        Conta instance = null;
+        instance.comentar();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of comentar method, of class Conta.
+     */
+    @Test
+    public void testComentar_String_File() {
+        System.out.println("comentar");
+        String texto = "";
+        File midia = null;
+        Conta instance = null;
+        instance.comentar(texto, midia);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

@@ -6,6 +6,7 @@
 
 package model;
 
+import java.io.File;
 import javax.swing.ImageIcon;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -101,7 +102,7 @@ public class NotificacaoTest {
         System.out.println("getFoto");
         Notificacao instance = null;
         ImageIcon expResult = null;
-        ImageIcon result = instance.getFoto();
+        File result = instance.getFoto();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -113,7 +114,7 @@ public class NotificacaoTest {
     @Test
     public void testSetFoto() {
         System.out.println("setFoto");
-        ImageIcon foto = null;
+        File foto = null;
         Notificacao instance = null;
         instance.setFoto(foto);
         // TODO review the generated test code and remove the default call to fail.
@@ -175,15 +176,16 @@ public class NotificacaoTest {
     }
 
     /**
-     * Test of ExcluirNotificação method, of class Notificacao.
+     * Test of comentar method, of class Notificacao.
      */
     @Test
-    public void testExcluirNotificação() {
-        System.out.println("ExcluirNotifica\u00e7\u00e3o");
+    public void testComentar() {
+        System.out.println("comentar");
         Notificacao instance = null;
-        instance.ExcluirNotificação();
+        instance.comentar();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
     
 }

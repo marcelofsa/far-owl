@@ -12,26 +12,36 @@ public class ControllerFarowl{
 
     /**
      *
-     * @param nome
-     * @param login
-     * @param senha
-     * @param email
      */
     public ControllerFarowl() {
     }
     
-    public GerarRanking(){
+    /**
+     *
+     */
+    public void GerarRanking(){
     	
     }
     
-    public Avisar(){
+    /**
+     *
+     */
+    public void Avisar(){
     	
     }
      
+    /**
+     *
+     * @return
+     */
     public String EncriptarSenha(){
     	return new String ();
     }
     
+    /**
+     *
+     * @return
+     */
     public boolean FiltrarPost(){
     	return true;
     }

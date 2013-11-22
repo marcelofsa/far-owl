@@ -29,7 +29,7 @@ public class Administrador extends Conta{
      * @param confirmacaoSenha
      * @param email
      * @param confirmacaoEmail
-     * @return
+     * @return retorna um novo administrador
      */
     public Administrador CriarAdmin(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail){
         
@@ -49,14 +49,15 @@ public class Administrador extends Conta{
      * @param confirmacaoSenha
      * @param email
      * @param confirmacaoEmail
-     * @param SetorAtuação
+     * @param setorAtuacao
      * @param CNPJ
-     * @return
+     * @param endereco
+     * @return retorna uma conta oficial
      */
-    public Oficial CriarOficial(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail, String SetorAtuação, int CNPJ){
+    public Oficial CriarOficial(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail, String setorAtuacao, int CNPJ, String endereco){
         
-        if(senha==confirmacaoSenha && email.equals(confirmacaoEmail)){
-        return new Oficial(nome, login, senha, email);
+        if((senha == null ? confirmacaoSenha == null : senha.equals(confirmacaoSenha)) && email.equals(confirmacaoEmail)){
+        return new Oficial(nome, login, senha, email, endereco, CNPJ, setorAtuacao);
         }
         else {
             return null;
