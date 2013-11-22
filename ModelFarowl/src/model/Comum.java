@@ -11,6 +11,7 @@ package model;
 public class Comum extends Usuario {
 
     private String sobrenome;
+    private int score;
 
     /**
      *
@@ -41,6 +42,7 @@ public class Comum extends Usuario {
      * @return
      */
     public Notificacao notificar() {
+        score++;
         return null;
 
     }
@@ -59,12 +61,7 @@ public class Comum extends Usuario {
 
     }
 
-    /**
-     *
-     */
-    public void excluirNotificacao() {
 
-    }
 
     /**
      *

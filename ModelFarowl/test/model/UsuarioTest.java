@@ -6,7 +6,7 @@
 
 package model;
 
-import java.awt.Image;
+import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author CasaPc
+ * @author Lucas
  */
 public class UsuarioTest {
     
@@ -37,6 +37,23 @@ public class UsuarioTest {
     
     @After
     public void tearDown() {
+    }
+
+    /**
+     * Test of editarPerfil method, of class Usuario.
+     */
+    @Test
+    public void testEditarPerfil() {
+        System.out.println("editarPerfil");
+        String nome = "";
+        String cidade = "";
+        String estado = "";
+        String pais = "";
+        File imagem = null;
+        Usuario instance = null;
+        instance.editarPerfil(nome, cidade, estado, pais, imagem);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -311,8 +328,8 @@ public class UsuarioTest {
     public void testGetFoto() {
         System.out.println("getFoto");
         Usuario instance = null;
-        Image expResult = null;
-        Image result = instance.getFoto();
+        File expResult = null;
+        File result = instance.getFoto();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -324,7 +341,7 @@ public class UsuarioTest {
     @Test
     public void testSetFoto() {
         System.out.println("setFoto");
-        Image foto = null;
+        File foto = null;
         Usuario instance = null;
         instance.setFoto(foto);
         // TODO review the generated test code and remove the default call to fail.
@@ -334,24 +351,8 @@ public class UsuarioTest {
     public class UsuarioImpl extends Usuario {
 
         public UsuarioImpl() {
-            super("", "", "", "");
+            super("", "");
         }
-    }
-
-    /**
-     * Test of editarPerfil method, of class Usuario.
-     */
-    @org.junit.Test
-    public void testEditarPerfil() {
-        System.out.println("editarPerfil");
-        String nome = "";
-        String cidade = "";
-        String estado = "";
-        String pais = "";
-        Usuario instance = null;
-        instance.editarPerfil(nome, cidade, estado, pais);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }

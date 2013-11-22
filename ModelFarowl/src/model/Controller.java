@@ -5,6 +5,7 @@
 package model;
 
 import Exceptions.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +14,9 @@ import java.util.ArrayList;
  */
 public class Controller {
 
-    private final ArrayList<Conta> contas = new ArrayList();
-    private final ArrayList<Conta> contasDeletadas = new ArrayList();
+    private ArrayList<Conta> contas = new ArrayList();
+    private ArrayList<Conta> contasDeletadas = new ArrayList();
+    private ArrayList<String> emails = new ArrayList();
     private Conta logado;
 
     /**
@@ -30,7 +32,7 @@ public class Controller {
      * @throws Exceptions.EmailJaCadastradoException
      * @throws Exceptions.ContaDeletadaException
      */
-    public void CadastrarUsuario(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException {
+    public void cadastrarUsuario(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException {
         Comum c = new Comum(nome, login, senha, email);
 
         for (int i = 0; i < contas.size(); i++) {  //verifica emails cadastrados
@@ -67,8 +69,9 @@ public class Controller {
      * @return
      */
     public Conta fazerLogin(String nome, String senha) {
-        if (contas.contains(new Comum(nome, senha))) {
-
+        Comum c = new Comum(nome, senha);
+        if (contas.contains(c)) {
+            logado = c;
         }
         return null;
 
@@ -96,21 +99,21 @@ public class Controller {
     /**
      *
      */
-    public void GerarRaking() {
+    public void gerarRaking() {
 
     }
 
     /**
      *
      */
-    public void Avisar() {
+    public void avisar() {
 
     }
 
     /**
      *
      */
-    public void EncriptarSenha() {
+    public void encriptarSenha() {
 
     }
 
@@ -118,7 +121,7 @@ public class Controller {
      *
      * @return
      */
-    public boolean FiltrarPost() {
+    public boolean filtrarPost() {
         return false;
 
     }
@@ -129,10 +132,9 @@ public class Controller {
      * @return
      */
     public boolean verificarEmail(String email) {
-        if (true) {
+        if (!emails.contains(email)) {
             return true;
         }
-
         return false;
     }
 
@@ -154,7 +156,7 @@ public class Controller {
      * @param email
      */
     public void recuperarSenha(String email) {
-
+        //enviaEmail(email);
     }
 
     /**
@@ -189,7 +191,7 @@ public class Controller {
      *
      */
     public void excluirNotificacao() {
-
+        logado.excluirNotificacao();
     }
 
     /**
@@ -236,9 +238,13 @@ public class Controller {
 
     /**
      *
+     * @param texto
+     * @param midia
+     * @param texto
+     * @param midia
      */
-    public void notificar() {
-
+    public void notificar(String texto, File midia) {
+        logado.notificar(texto, midia);
     }
 
     /**
@@ -251,22 +257,29 @@ public class Controller {
     /**
      *
      */
-    public void modoAnonimo() {
-
+    public void notificarAnonimo() {
+        logado.notificarAnonimo();
     }
 
     /**
      *
      */
-    public void apoir() {
+    public void comentarAnonimo() {
+        logado.comentarAnonimo();
+    }
 
+    /**
+     *
+     */
+    public void apoiar() {
+        logado.apoiar();
     }
 
     /**
      *
      */
     public void desapoiar() {
-
+        logado.desapoiar();
     }
 
     /**
@@ -280,14 +293,16 @@ public class Controller {
      *
      */
     public void mudarStatus() {
-
+        logado.mudarStatus(true);
     }
 
     /**
      *
+     * @param texto
+     * @param midia
      */
-    public void comentar() {
-
+    public void comentar(String texto, File midia) {
+    logado.comentar(texto, midia);
     }
 
     /**
@@ -308,7 +323,7 @@ public class Controller {
      *
      */
     public void buscarNotificacao() {
-
+logado.buscarNotificacao();
     }
 
     /**
@@ -398,7 +413,11 @@ public class Controller {
      * @param confirmaEmail
      * @return
      */
-    public Oficial criarOficial(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail) {
+    public Oficial criarOficial(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail, String endereco, int CNPJ, String setorAtuacao) {
+        if(logado instanceof Administrador){
+            Oficial f=new Oficial(nome, login, senha,  email, endereco, CNPJ, setorAtuacao);
+        return f;
+        }
         return null;
 
     }
@@ -410,9 +429,12 @@ public class Controller {
         // TODO code application logic here
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean verificarEmail() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
 }

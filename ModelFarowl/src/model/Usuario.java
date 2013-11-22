@@ -5,6 +5,7 @@
 package model;
 
 import java.awt.Image;
+import java.io.File;
 
 /**
  *
@@ -15,7 +16,7 @@ public abstract class Usuario extends Conta {
     private String cidade;
     private String Estado;
     private String pais;
-    private Image foto;
+    private File foto;
 
     /**
      *
@@ -43,10 +44,15 @@ public abstract class Usuario extends Conta {
      * @param cidade
      * @param estado
      * @param pais
+     * @param imagem
      */
-    public void editarPerfil(String nome, String cidade, String estado, String pais){
+    public void editarPerfil(String nome, String cidade, String estado, String pais, File imagem){
     
-    
+    super.setNome(nome);
+    this.setCidade(cidade);
+    this.setEstado(estado);
+    this.setPais(pais);
+    this.setFoto(imagem);
     
     }
     /**
@@ -210,7 +216,7 @@ public abstract class Usuario extends Conta {
      *
      * @return
      */
-    public Image getFoto() {
+    public File getFoto() {
         return foto;
     }
 
@@ -218,7 +224,7 @@ public abstract class Usuario extends Conta {
      *
      * @param foto
      */
-    public void setFoto(Image foto) {
+    public void setFoto(File foto) {
         this.foto = foto;
     }
 

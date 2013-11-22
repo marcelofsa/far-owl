@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.awt.Image;
+import java.io.File;
 
 /**
  *
@@ -13,7 +13,7 @@ import java.awt.Image;
 public class Comentario {
     
     String Texto;
-    Image foto;
+    File foto;
     private int ID;
 
     /**
@@ -21,7 +21,7 @@ public class Comentario {
      * @param Texto
      * @param foto
      */
-    public Comentario(String Texto, Image foto) {
+    public Comentario(String Texto, File foto) {
         this.Texto = Texto;
         this.foto = foto;
     }

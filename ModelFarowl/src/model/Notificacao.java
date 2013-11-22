@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -14,12 +15,13 @@ import javax.swing.ImageIcon;
 public class Notificacao {
     
     private String texto;
-    private ImageIcon foto;
+    private File foto;
     private String tag;
     private boolean status;
     private ArrayList <Usuario> apoios;
     private ArrayList <Comentario> comentarios;
     private int ID;
+    private int score;
 
     /**
      *
@@ -43,10 +45,11 @@ public class Notificacao {
      * @param foto
      * @param tag
      */
-    public Notificacao(String texto, ImageIcon foto, String tag) {
+    public Notificacao(String texto, File foto, String tag) {
         this.texto = texto;
         this.foto = foto;
         this.tag = tag;
+        score=1;
     }
 
     /**
@@ -69,7 +72,7 @@ public class Notificacao {
      *
      * @return
      */
-    public ImageIcon getFoto() {
+    public File getFoto() {
         return foto;
     }
 
@@ -77,7 +80,7 @@ public class Notificacao {
      *
      * @param foto
      */
-    public void setFoto(ImageIcon foto) {
+    public void setFoto(File foto) {
         this.foto = foto;
     }
 
@@ -112,11 +115,10 @@ public class Notificacao {
     public void MudarStatus(boolean status) {
         this.status = status;
     }
+
+    public void comentar(){
     
-    /**
-     *
-     */
-    public void ExcluirNotificação(){
     
     }
+  
 }

@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author CasaPc
+ * @author Lucas
  */
 public class AdministradorTest {
     
@@ -70,11 +70,12 @@ public class AdministradorTest {
         String confirmacaoSenha = "";
         String email = "";
         String confirmacaoEmail = "";
-        String SetorAtuação = "";
+        String setorAtuacao = "";
         int CNPJ = 0;
+        String endereco = "";
         Administrador instance = null;
         Oficial expResult = null;
-        Oficial result = instance.CriarOficial(nome, login, senha, confirmacaoSenha, email, confirmacaoEmail, SetorAtuação, CNPJ);
+        Oficial result = instance.CriarOficial(nome, login, senha, confirmacaoSenha, email, confirmacaoEmail, setorAtuacao, CNPJ, endereco);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
