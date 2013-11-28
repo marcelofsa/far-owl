@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class ContaDeletadaException extends Exception{
+public class ContaDeletadaException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class ContaDeletadaException extends Exception{
     public ContaDeletadaException(String string) {
         super(string);
     }
-    
+
 }

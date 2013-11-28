@@ -4,14 +4,16 @@
  */
 package model;
 
-import java.awt.Image;
+import Exceptions.BuscaNaoEncontradaException;
+import Exceptions.CaracteresInvalidosException;
+import Exceptions.NovaSenhaInvalidaException;
 import java.io.File;
 
 /**
  *
  * @author CasaPc
  */
-public abstract class Usuario extends Conta {
+public class Usuario extends Conta {
 
     private String cidade;
     private String Estado;
@@ -24,9 +26,18 @@ public abstract class Usuario extends Conta {
      * @param login
      * @param senha
      * @param email
+     * @param cidade
+     * @param estado
+     * @param foto
+     * @param pais
+     * @throws Exceptions.CaracteresInvalidosException
      */
-    public Usuario(String nome, String login, String senha, String email) {
+    public Usuario(String nome, String login, String senha, String email, String cidade, String estado, String pais, File foto) throws CaracteresInvalidosException {
         super(nome, login, senha, email);
+        this.cidade = cidade;
+        this.Estado = estado;
+        this.pais = pais;
+        this.foto = foto;
     }
 
     /**
@@ -37,7 +48,7 @@ public abstract class Usuario extends Conta {
     public Usuario(String nome, String senha) {
         super(nome, senha);
     }
-    
+
     /**
      *
      * @param nome
@@ -46,15 +57,16 @@ public abstract class Usuario extends Conta {
      * @param pais
      * @param imagem
      */
-    public void editarPerfil(String nome, String cidade, String estado, String pais, File imagem){
-    
-    super.setNome(nome);
-    this.setCidade(cidade);
-    this.setEstado(estado);
-    this.setPais(pais);
-    this.setFoto(imagem);
-    
+    public void editarPerfil(String nome, String cidade, String estado, String pais, File imagem) {
+
+        super.setNome(nome);
+        this.setCidade(cidade);
+        this.setEstado(estado);
+        this.setPais(pais);
+        this.setFoto(imagem);
+
     }
+
     /**
      *
      * @return
@@ -228,6 +240,25 @@ public abstract class Usuario extends Conta {
         this.foto = foto;
     }
 
- 
+    void visualizarNotificacao(Notificacao not) {
+
+    }
+
+    public void buscarNotificacao(String tag) throws BuscaNaoEncontradaException {
+        if (Controller.notificacoes.isEmpty()) {
+            throw new BuscaNaoEncontradaException("");
+        }
+
+    }
+
+    public void mudarSenha(String senhaAntiga, String senhaNova, String confirmSenha) throws NovaSenhaInvalidaException {
+        if (senhaNova.equals(confirmSenha)) {
+            if (senhaAntiga.equals(super.getSenha())) {
+                super.setSenha(senhaNova);
+            }
+        } else {
+            throw new NovaSenhaInvalidaException("");
+        }
+    }
 
 }

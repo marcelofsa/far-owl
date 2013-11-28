@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class ArquivoNaoSuportadoException extends Exception{
+public class ArquivoNaoSuportadoException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class ArquivoNaoSuportadoException extends Exception{
     public ArquivoNaoSuportadoException(String string) {
         super(string);
     }
-    
+
 }

@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class RankingVazioexception extends Exception{
+public class RankingVazioexception extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class RankingVazioexception extends Exception{
     public RankingVazioexception(String string) {
         super(string);
     }
-    
+
 }

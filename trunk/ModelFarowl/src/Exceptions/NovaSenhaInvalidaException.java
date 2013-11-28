@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class NovaSenhaInvalidaException extends Exception{
+public class NovaSenhaInvalidaException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class NovaSenhaInvalidaException extends Exception{
     public NovaSenhaInvalidaException(String string) {
         super(string);
     }
-    
+
 }

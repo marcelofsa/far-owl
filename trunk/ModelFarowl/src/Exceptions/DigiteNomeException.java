@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class DigiteNomeException extends Exception{
+public class DigiteNomeException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class DigiteNomeException extends Exception{
     public DigiteNomeException(String string) {
         super(string);
     }
-    
+
 }

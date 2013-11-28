@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class SenhaincompativelException extends Exception{
+public class SenhaincompativelException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class SenhaincompativelException extends Exception{
     public SenhaincompativelException(String string) {
         super(string);
     }
-    
+
 }

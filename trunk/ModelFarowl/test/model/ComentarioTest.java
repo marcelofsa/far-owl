@@ -1,68 +1,114 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import Exceptions.CaracteresInvalidosException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import java.io.File;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
+ * Testes baseados nos modelos Relacional , Entidade Relacional e Diagrama de
+ * Classes, feitos por Lucas Carneiro e Paulo Cares Esse teste tem como objetivo
+ * verificar as caracteristicas basicas da classe comentario
  *
- * @author CasaPc
+ *
+ * Comentario possui como atributos segundo o modelo relacional e discu��es
+ * referentes ao terceiro problema : => idUsuario (login normal ou idNumerico,
+ * nos testes estar o numerico com probabilidade de voltar a ser o login normal)
+ * => idNotificacao => id do proprio comentario => texto => arquivo de foto ou
+ * video Construtor de comentario: Comentario coment = new Comentario(String
+ * texto, File videoOuImagem, int idUser, String notId, String comentId);
+ *
+ *
+ * @author Carla
  */
 public class ComentarioTest {
-    
-    public ComentarioTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+
+    File fotoComent1 = new File("fotoComent1.jpg");
+    File fotoComent2 = new File("fotoComent2.jpg");
+    File videoComent1 = new File("videoComent1.mp4");
+    File videoComent2 = new File("videoComent2.mp4");
 
     /**
-     * Test of getID method, of class Comentario.
+     * Quando houver a conex�o da interface com o codigo a exce��o
+     * ComentarioNaoDeveSerEnviado provavelmente n�o ir� ocorrer porque o bot�o
+     * que permite o usuario comentar ficar� invalido at� o usuario fazer um
+     * comentario realmente
      */
-    @Test
-    public void testGetID() {
-        System.out.println("getID");
-        Comentario instance = null;
-        int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test(expected = CaracteresInvalidosException.class)
+
+    public void comentarNada() throws CaracteresInvalidosException {
+
+        Comentario coment = new Comentario(null, null, 890, 1);
     }
 
-    /**
-     * Test of setID method, of class Comentario.
-     */
     @Test
-    public void testSetID() {
-        System.out.println("setID");
-        int ID = 0;
-        Comentario instance = null;
-        instance.setID(ID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void comentarSomenteTexto() throws CaracteresInvalidosException {
+
+        Comentario coment1 = new Comentario("eu vi o acidente, o rapaz esta no HGCH", null, 890, 1);
+
+        assertNull(coment1.getFile());
+        assertNotNull(coment1.getTexto());
+        assertEquals("eu vi o acidente, o rapaz esta no HGCH", coment1.getTexto());
+        assertEquals(890, coment1.getIdUsuario());
+        assertEquals(1, coment1.getIdNotificacao());
+        //assertEquals("comentId", coment1.getId());
+
+        Comentario coment2 = new Comentario("Maria, voc� sabe qual curso ele faz ?", null, 892, 1);
+        assertNull(coment2.getFile());
+        assertNotNull(coment2.getTexto());
+        assertEquals("Maria, voc� sabe qual curso ele faz ?", coment2.getTexto());
+        assertEquals(892, coment2.getIdUsuario());
+        assertEquals(1, coment2.getIdNotificacao());
+        //assertEquals("comentId2", coment2.getId());
+
     }
-    
+
+    @Test
+    public void comentarComImagem() throws CaracteresInvalidosException {
+
+        Comentario coment1 = new Comentario(null, fotoComent1, 123, 1);
+
+        assertNotNull(coment1.getFile());
+        assertEquals(fotoComent1, coment1.getFile());
+        assertNull(coment1.getTexto());
+        assertEquals(123, coment1.getIdUsuario());
+        assertEquals(1, coment1.getIdNotificacao());
+        //assertEquals("comentId", coment1.getId());
+
+        Comentario coment2 = new Comentario("Realmente", fotoComent2, 321, 1);
+        assertNotNull(coment2.getFile());
+        assertEquals(fotoComent2, coment2.getFile());
+        assertNotNull(coment2.getTexto());
+        assertEquals("Realmente", coment2.getTexto());
+        assertEquals(321, coment2.getIdUsuario());
+        assertEquals(1, coment2.getIdNotificacao());
+        //assertEquals("comentId2", coment2.getId());
+
+    }
+
+    @Test
+    public void comentarComVideo() throws CaracteresInvalidosException {
+
+        Comentario coment1 = new Comentario(null, videoComent1, 123, 1);
+
+        assertNotNull(coment1.getFile());
+        assertEquals(videoComent1, coment1.getFile());
+        assertNull(coment1.getTexto());
+        assertEquals(123, coment1.getIdUsuario());
+        assertEquals(1, coment1.getIdNotificacao());
+        //assertEquals("comentId", coment1.getId());
+
+        Comentario coment2 = new Comentario("Realmente", videoComent2, 321, 1);
+        assertNotNull(coment2.getFile());
+        assertEquals(videoComent2, coment2.getFile());
+        assertNotNull(coment2.getTexto());
+        assertEquals("Realmente", coment2.getTexto());
+        assertEquals(321, coment2.getIdUsuario());
+        assertEquals(1, coment2.getIdNotificacao());
+        //assertEquals("comentId2", coment2.getId());
+
+    }
 }

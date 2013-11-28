@@ -1,358 +1,139 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
-import java.io.File;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import Exceptions.BuscaNaoEncontradaException;
+import Exceptions.CaracteresInvalidosException;
+import Exceptions.NovaSenhaInvalidaException;
+import Exceptions.SenhaincompativelException;
 import static org.junit.Assert.*;
 
+import java.io.File;
+import org.junit.Before;
+
+import org.junit.Test;
+
 /**
+ * Testes baseados nos modelos Relacional , Entidade Relacional e Diagrama de
+ * Classes, feitos por Lucas Carneiro e Paulo Cares Esse teste tem como objetivo
+ * verificar as caracteristicas basicas da classe Usuario que extende da classe
+ * Conta. Construtor de Usuario : Usuario user = new Usuario (int id, String
+ * nome, String login, String senha, String email String cidade, String estado,
+ * String pais, File fotoPerfil) Conta conta = new Conta(int id, String nome,
+ * String login, String senha, String email);
  *
- * @author Lucas
+ * @author Carla
+ *
  */
 public class UsuarioTest {
-    
-    public UsuarioTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
+    File fotoPerfil = new File("fotoPerfilUsuario.png");
+    File fotoComent2 = new File("fotoComent2.jpg");
+
     @Before
-    public void setUp() {
+    public void zerarListas() {
+        Controller.notificacoes.removeAll(Controller.notificacoes);
+        Controller.contas.removeAll(Controller.contas);
     }
-    
-    @After
-    public void tearDown() {
+
+    @Test(expected = CaracteresInvalidosException.class)
+    public void criarUsuarioComInformacoesNulas() throws CaracteresInvalidosException {
+
+        Conta user = new Usuario(null, null, null, null, null, null, null, null);
+    }
+
+    @Test(expected = CaracteresInvalidosException.class)
+    public void criarContaSemInformacoesOuInformacoesIncompletas() throws CaracteresInvalidosException {
+
+        Conta userInvalido1 = new Usuario("", "login", "senha", "email", "cidade",
+                "estado", "pais", fotoPerfil);
+        Conta userInvalido2 = new Usuario("nome", "", "senha", "email", "cidade",
+                "estado", "pais", fotoPerfil);
+        Conta userInvalido3 = new Usuario("nome", "login", "", "email", "cidade",
+                "estado", "pais", fotoPerfil);
+        Conta userInvalido4 = new Usuario("nome", "login", "senha", "", "cidade",
+                "estado", "pais", fotoPerfil);
+        Conta userInvalido5 = new Usuario("nome", "login", "senha", "email", "",
+                "estado", "pais", fotoPerfil);
+        Conta userInvalido6 = new Usuario("nome", "login", "senha", "email", "cidade",
+                "estado", "", fotoPerfil);
+        Conta userInvalido7 = new Usuario("nome", "login", "senha", "email", "cidade",
+                "", "pais", fotoPerfil);
+        Conta userInvalido8 = new Usuario("nome", "login", "senha", "email", "cidade",
+                "estado", "pais", null);
+    }
+
+    @Test
+    public void criacaoDeUsuarioComInformacoesValidas() throws CaracteresInvalidosException {
+
+        Conta contaValida = new Usuario("nome1", "login1", "senha1", "nome1@email.com", "cidade",
+                "estado", "pais", fotoPerfil);
+
+        Usuario userValido = new Usuario("nome2", "login2", "senha2", "nome2@email.com", "cidade",
+                "estado", "pais", fotoPerfil);
     }
 
     /**
-     * Test of editarPerfil method, of class Usuario.
+     * Maria vai comentar a notifica��o que ela estar visualizando atraves do
+     * metodo comentar(String texto, File fotoOuVideo);
      */
     @Test
-    public void testEditarPerfil() {
-        System.out.println("editarPerfil");
-        String nome = "";
-        String cidade = "";
-        String estado = "";
-        String pais = "";
-        File imagem = null;
-        Usuario instance = null;
-        instance.editarPerfil(nome, cidade, estado, pais, imagem);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void comentar() throws CaracteresInvalidosException {
+
+        Usuario maria = new Usuario("Maria", "Mary", "senhaMaria", "maria@email.com", "ssa",
+                "Bahia", "Brasil", fotoPerfil);
+        Controller.contas.add(maria);
+        Notificacao not = new Notificacao("Acidente de moto na uefs", null, maria.getId(), Controller.notificacoes.size(), "Acidente", false);
+        Controller.notificacoes.add(not);
+        maria.visualizarNotificacao(not);
+
+        Comentario coment1 = maria.comentar("eu vi esse acidente, o rapaz ainda estar mal", null, not.getId());
+
+        assertEquals("eu vi esse acidente, o rapaz ainda estar mal", coment1.getTexto());
+        assertEquals(maria.getId(), coment1.getIdUsuario());
+        assertEquals(not.getId(), coment1.getIdNotificacao());
+        assertNull(coment1.getFile());
+
+        Comentario coment2 = maria.comentar(null, fotoComent2);
+
+        assertNull(coment2.getTexto());
+        assertEquals(coment1.getIdUsuario(), coment2.getIdUsuario());
+        assertEquals(coment1.getIdNotificacao(), coment2.getIdNotificacao());
+        //assertNotEquals(coment1.getId(), coment2.getId());
+        assertNotNull(coment2.getFile());
+        assertEquals(fotoComent2, coment2.getFile());
+
+    }
+
+    @Test(expected = BuscaNaoEncontradaException.class)
+    public void buscaInvalidaDeNotificacoes() throws CaracteresInvalidosException, BuscaNaoEncontradaException {
+
+        Usuario maria = new Usuario("Maria", "Mary", "senhaMaria", "maria@email.com", "ssa",
+                "Bahia", "Brasil", fotoPerfil);
+        maria.buscarNotificacao("Invalida");
+
     }
 
     /**
-     * Test of Comentar method, of class Usuario.
+     * O teste de busca Valida ser� realizado nos testes de aceita��o pois
+     * precisar� ter acesso ao banco de dados
      */
+    @Test(expected = NovaSenhaInvalidaException.class)
+    public void alterarSenhaComNovaSenhaInvalida() throws CaracteresInvalidosException, NovaSenhaInvalidaException {
+
+        Usuario maria = new Usuario("Maria", "Mary", "senhaMaria", "maria@email.com", "ssa",
+                "Bahia", "Brasil", fotoPerfil);
+        maria.mudarSenha("senhaMaria", "senhaNova", "senhaErrada");
+    }
+
     @Test
-    public void testComentar() {
-        System.out.println("Comentar");
-        Usuario instance = null;
-        Comentario expResult = null;
-        Comentario result = instance.Comentar();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void alterarSenha() throws NovaSenhaInvalidaException, SenhaincompativelException, CaracteresInvalidosException {
+
+        Usuario maria = new Usuario("Maria", "Mary", "senhaMaria", "maria@email.com", "ssa",
+                "Bahia", "Brasil", fotoPerfil);
+
+        assertEquals("senhaMaria", maria.getSenha());
+        maria.mudarSenha("senhaMaria", "senhaNova", "senhaNova");
+
+        assertEquals("senhaNova", maria.getSenha());
     }
 
-    /**
-     * Test of adcionarFotoVideo method, of class Usuario.
-     */
-    @Test
-    public void testAdcionarFotoVideo() {
-        System.out.println("adcionarFotoVideo");
-        Usuario instance = null;
-        instance.adcionarFotoVideo();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of Ordenarnotificacoes method, of class Usuario.
-     */
-    @Test
-    public void testOrdenarnotificacoes() {
-        System.out.println("Ordenarnotificacoes");
-        Usuario instance = null;
-        instance.Ordenarnotificacoes();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of RecuperarSenha method, of class Usuario.
-     */
-    @Test
-    public void testRecuperarSenha() {
-        System.out.println("RecuperarSenha");
-        Usuario instance = null;
-        instance.RecuperarSenha();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of MudarIdioma method, of class Usuario.
-     */
-    @Test
-    public void testMudarIdioma() {
-        System.out.println("MudarIdioma");
-        Usuario instance = null;
-        instance.MudarIdioma();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of BuscarNotificacao method, of class Usuario.
-     */
-    @Test
-    public void testBuscarNotificacao() {
-        System.out.println("BuscarNotificacao");
-        Usuario instance = null;
-        instance.BuscarNotificacao();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of AcessarMenu method, of class Usuario.
-     */
-    @Test
-    public void testAcessarMenu() {
-        System.out.println("AcessarMenu");
-        Usuario instance = null;
-        instance.AcessarMenu();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of VisualizarComentario method, of class Usuario.
-     */
-    @Test
-    public void testVisualizarComentario() {
-        System.out.println("VisualizarComentario");
-        Usuario instance = null;
-        Comentario expResult = null;
-        Comentario result = instance.VisualizarComentario();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of VisualizarPerfil method, of class Usuario.
-     */
-    @Test
-    public void testVisualizarPerfil() {
-        System.out.println("VisualizarPerfil");
-        Usuario instance = null;
-        instance.VisualizarPerfil();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of AlterarSenha method, of class Usuario.
-     */
-    @Test
-    public void testAlterarSenha() {
-        System.out.println("AlterarSenha");
-        Usuario instance = null;
-        instance.AlterarSenha();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of VisualizarRaking method, of class Usuario.
-     */
-    @Test
-    public void testVisualizarRaking() {
-        System.out.println("VisualizarRaking");
-        Usuario instance = null;
-        instance.VisualizarRaking();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of SobreApp method, of class Usuario.
-     */
-    @Test
-    public void testSobreApp() {
-        System.out.println("SobreApp");
-        Usuario instance = null;
-        instance.SobreApp();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of VisualizarMapa method, of class Usuario.
-     */
-    @Test
-    public void testVisualizarMapa() {
-        System.out.println("VisualizarMapa");
-        Usuario instance = null;
-        instance.VisualizarMapa();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of VisualizarAvisos method, of class Usuario.
-     */
-    @Test
-    public void testVisualizarAvisos() {
-        System.out.println("VisualizarAvisos");
-        Usuario instance = null;
-        instance.VisualizarAvisos();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of Sair method, of class Usuario.
-     */
-    @Test
-    public void testSair() {
-        System.out.println("Sair");
-        Usuario instance = null;
-        instance.Sair();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCidade method, of class Usuario.
-     */
-    @Test
-    public void testGetCidade() {
-        System.out.println("getCidade");
-        Usuario instance = null;
-        String expResult = "";
-        String result = instance.getCidade();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setCidade method, of class Usuario.
-     */
-    @Test
-    public void testSetCidade() {
-        System.out.println("setCidade");
-        String cidade = "";
-        Usuario instance = null;
-        instance.setCidade(cidade);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getEstado method, of class Usuario.
-     */
-    @Test
-    public void testGetEstado() {
-        System.out.println("getEstado");
-        Usuario instance = null;
-        String expResult = "";
-        String result = instance.getEstado();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setEstado method, of class Usuario.
-     */
-    @Test
-    public void testSetEstado() {
-        System.out.println("setEstado");
-        String Estado = "";
-        Usuario instance = null;
-        instance.setEstado(Estado);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getPais method, of class Usuario.
-     */
-    @Test
-    public void testGetPais() {
-        System.out.println("getPais");
-        Usuario instance = null;
-        String expResult = "";
-        String result = instance.getPais();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setPais method, of class Usuario.
-     */
-    @Test
-    public void testSetPais() {
-        System.out.println("setPais");
-        String pais = "";
-        Usuario instance = null;
-        instance.setPais(pais);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getFoto method, of class Usuario.
-     */
-    @Test
-    public void testGetFoto() {
-        System.out.println("getFoto");
-        Usuario instance = null;
-        File expResult = null;
-        File result = instance.getFoto();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setFoto method, of class Usuario.
-     */
-    @Test
-    public void testSetFoto() {
-        System.out.println("setFoto");
-        File foto = null;
-        Usuario instance = null;
-        instance.setFoto(foto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    public class UsuarioImpl extends Usuario {
-
-        public UsuarioImpl() {
-            super("", "");
-        }
-    }
-    
 }

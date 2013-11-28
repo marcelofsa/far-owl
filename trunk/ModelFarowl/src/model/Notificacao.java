@@ -4,39 +4,113 @@
  */
 package model;
 
+import Exceptions.CaracteresInvalidosException;
 import java.io.File;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 
 /**
  *
- * @author CasaPc
+ * @author Lucas
  */
 public class Notificacao {
-    
+
     private String texto;
-    private File foto;
+    private File file;
     private String tag;
     private boolean status;
-    private ArrayList <Usuario> apoios;
-    private ArrayList <Comentario> comentarios;
-    private int ID;
+    private ArrayList<Usuario> apoios;
+    private ArrayList<Usuario> denuncias;
+    private ArrayList<Comentario> comentarios;
+    private int IdUser;
+    private int Id;
     private int score;
+    private boolean Anonimo;
 
     /**
      *
      * @return
      */
-    public int getID() {
-        return ID;
+    public int getIdUsuario() {
+
+        if (Anonimo) {
+            if (Controller.logado.getId() == IdUser || Controller.logado instanceof Administrador) {
+                return IdUser;
+            }
+            return -1;
+        }
+        return IdUser;
     }
 
     /**
      *
-     * @param ID
+     * @param IdUser
      */
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setIdUsuario(int IdUser) {
+        this.IdUser = IdUser;
+    }
+
+    /**
+     *
+     * @param texto
+     * @param file
+     * @param IdUser
+     * @param Id
+     * @param tag
+     * @param status
+     * @throws CaracteresInvalidosException
+     */
+    public Notificacao(String texto, File file, int IdUser, int Id, String tag, boolean status) throws CaracteresInvalidosException {
+        if (texto == null && file == null) {
+            throw new CaracteresInvalidosException("");
+        }
+        this.texto = texto;
+        this.file = file;
+        this.tag = tag;
+        this.status = status;
+        this.IdUser = IdUser;
+        this.Id = Id;
+    }
+
+    /**
+     *
+     * @param texto
+     * @param foto
+     * @param user
+     */
+    public Notificacao(String texto, File foto, int user) {
+        this.texto = texto;
+        this.file = foto;
+        this.IdUser = user;
+    }
+
+    /**
+     *
+     * @param texto
+     * @param foto
+     * @param user
+     * @param anonimo
+     */
+    public Notificacao(String texto, File foto, int user, boolean anonimo) {
+        this.texto = texto;
+        this.file = foto;
+        this.IdUser = user;
+        this.Anonimo = anonimo;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public int getId() {
+        return Id;
+    }
+
+    /**
+     *
+     * @param Id
+     */
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     /**
@@ -47,9 +121,9 @@ public class Notificacao {
      */
     public Notificacao(String texto, File foto, String tag) {
         this.texto = texto;
-        this.foto = foto;
+        this.file = foto;
         this.tag = tag;
-        score=1;
+        score = 1;
     }
 
     /**
@@ -72,16 +146,16 @@ public class Notificacao {
      *
      * @return
      */
-    public File getFoto() {
-        return foto;
+    public File getFile() {
+        return file;
     }
 
     /**
      *
-     * @param foto
+     * @param file
      */
-    public void setFoto(File foto) {
-        this.foto = foto;
+    public void setFile(File file) {
+        this.file = file;
     }
 
     /**
@@ -116,9 +190,25 @@ public class Notificacao {
         this.status = status;
     }
 
-    public void comentar(){
-    
-    
+    /**
+     *
+     */
+    public void comentar() {
+
     }
-  
+
+    int qtdApoios() {
+        return 0;
+    }
+
+    boolean getStatus() {
+        return status;
+    }
+
+    void mudarStatus(boolean b, int i) {
+        if (i == IdUser) {
+            status = b;
+        }
+    }
+
 }

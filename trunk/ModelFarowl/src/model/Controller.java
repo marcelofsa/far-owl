@@ -14,10 +14,16 @@ import java.util.ArrayList;
  */
 public class Controller {
 
-    private ArrayList<Conta> contas = new ArrayList();
+    static ArrayList<Conta> contas = new ArrayList();
+    static ArrayList<Notificacao> notificacoes = new ArrayList();
     private ArrayList<Conta> contasDeletadas = new ArrayList();
     private ArrayList<String> emails = new ArrayList();
-    private Conta logado;
+    private ArrayList<String> blackList = new ArrayList();
+    static Conta logado;
+
+    static final int not = 1;
+    static final int coment = 2;
+    static final int apoio = 5;
 
     /**
      *
@@ -31,9 +37,10 @@ public class Controller {
      * @throws SenhaincompativelException
      * @throws Exceptions.EmailJaCadastradoException
      * @throws Exceptions.ContaDeletadaException
+     * @throws Exceptions.CaracteresInvalidosException
      */
-    public void cadastrarUsuario(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException {
-        Comum c = new Comum(nome, login, senha, email);
+    public void cadastrarUsuario(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException, CaracteresInvalidosException {
+        Comum c = new Comum(nome, login, senha, email, "", "", "", null, "", 0, "");
 
         for (int i = 0; i < contas.size(); i++) {  //verifica emails cadastrados
             if (contas.get(i).compareEmail(c)) {
@@ -119,11 +126,15 @@ public class Controller {
 
     /**
      *
+     * @param texto
      * @return
      */
-    public boolean filtrarPost() {
+    public boolean filtrarPost(String texto) {
+        String text[] = texto.split(" ");
+        for (String text1 : text) {
+            return blackList.contains(text1);
+        }
         return false;
-
     }
 
     /**
@@ -132,23 +143,17 @@ public class Controller {
      * @return
      */
     public boolean verificarEmail(String email) {
-        if (!emails.contains(email)) {
-            return true;
-        }
-        return false;
+        return !emails.contains(email);
     }
 
     /**
      *
-     * @param email
+     * @param login
      * @return
      */
-    public boolean verificarLogin(String email) {
-        if (true) {
-            return true;
-        }
+    public boolean verificarLogin(String login) {
 
-        return false;
+        return true;
     }
 
     /**
@@ -191,7 +196,9 @@ public class Controller {
      *
      */
     public void excluirNotificacao() {
-        logado.excluirNotificacao();
+        if (logado instanceof Comum || logado instanceof Administrador) {
+            logado.excluirNotificacao();
+        }
     }
 
     /**
@@ -238,8 +245,6 @@ public class Controller {
 
     /**
      *
-     * @param texto
-     * @param midia
      * @param texto
      * @param midia
      */
@@ -302,7 +307,7 @@ public class Controller {
      * @param midia
      */
     public void comentar(String texto, File midia) {
-    logado.comentar(texto, midia);
+        logado.comentar(texto, midia);
     }
 
     /**
@@ -323,7 +328,7 @@ public class Controller {
      *
      */
     public void buscarNotificacao() {
-logado.buscarNotificacao();
+        logado.buscarNotificacao();
     }
 
     /**
@@ -342,8 +347,11 @@ logado.buscarNotificacao();
 
     /**
      *
+     * @param senhaAntiga
+     * @param confirmacaoSenha
+     * @param novaSenha
      */
-    public void alterarSenha() {
+    public void alterarSenha(String senhaAntiga, String novaSenha, String confirmacaoSenha) {
 
     }
 
@@ -411,22 +419,19 @@ logado.buscarNotificacao();
      * @param confirmaSenha
      * @param email
      * @param confirmaEmail
+     * @param endereco
+     * @param CNPJ
+     * @param setorAtuacao
      * @return
+     * @throws Exceptions.CaracteresInvalidosException
      */
-    public Oficial criarOficial(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail, String endereco, int CNPJ, String setorAtuacao) {
-        if(logado instanceof Administrador){
-            Oficial f=new Oficial(nome, login, senha,  email, endereco, CNPJ, setorAtuacao);
-        return f;
+    public Oficial criarOficial(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail, String endereco, int CNPJ, String setorAtuacao) throws CaracteresInvalidosException {
+        if (logado instanceof Administrador) {
+            Oficial f = new Oficial(nome, login, senha, email, "", "", "", null, endereco, CNPJ, setorAtuacao);
+            return f;
         }
         return null;
 
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
     }
 
     /**

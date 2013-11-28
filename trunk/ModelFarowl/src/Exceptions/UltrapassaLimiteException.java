@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class UltrapassaLimiteException extends Exception{
+public class UltrapassaLimiteException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class UltrapassaLimiteException extends Exception{
     public UltrapassaLimiteException(String string) {
         super(string);
     }
-    
+
 }

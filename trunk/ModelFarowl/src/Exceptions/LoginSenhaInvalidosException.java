@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class LoginSenhaInvalidosException extends Exception{
+public class LoginSenhaInvalidosException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class LoginSenhaInvalidosException extends Exception{
     public LoginSenhaInvalidosException(String string) {
         super(string);
     }
-    
+
 }

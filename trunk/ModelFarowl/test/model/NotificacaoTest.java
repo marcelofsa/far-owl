@@ -1,191 +1,116 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package model;
 
-import java.io.File;
-import javax.swing.ImageIcon;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import Exceptions.CaracteresInvalidosException;
 import static org.junit.Assert.*;
 
+import java.io.File;
+
+import org.junit.Test;
+
 /**
+ * Testes baseados nos modelos Relacional , Entidade Relacional e Diagrama de
+ * Classes, feitos por Lucas Carneiro e Paulo Cares Esse teste tem como objetivo
+ * verificar as caracteristicas basicas da classe Notifica��o do sistema
  *
- * @author CasaPc
+ * Notificacao possui como atributos segundo o modelo relacional e discu��es
+ * referentes ao terceiro problema : => identificador do usuario que fez a
+ * notifica��o => identificador da propria classe => a tag (o assunto ao qual a
+ * notifica��o se refere) => status (se estar resolvida ou n�o) => arquivo (uma
+ * foto ou video) => texto => apoios
+ *
+ * Contrutor da classe: Notificacao not = new Notificacao (String texto, File
+ * videoOuImagem, int idUser, String notId, String Tag, boolean status);
+ *
+ * @author Carla
+ *
  */
 public class NotificacaoTest {
-    
-    public NotificacaoTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
+
+    File fotoNot1 = new File("fotoNot1.jpg");
+    File fotoNot2 = new File("fotoNot2.jpg");
+    File videoNot1 = new File("videoNot1.mp4");
+    File videoNot2 = new File("videoNot2.mp4");
 
     /**
-     * Test of getID method, of class Notificacao.
+     * Quando houver a conex�o da interface com o codigo a exce��o
+     * NotificacaoNaoDeveSerEnviada provavelmente n�o ir� ocorrer porque o bot�o
+     * que permite o usuario notificar ficar� invalido at� o usuario fazer uma
+     * notifica��o realmente
      */
-    @Test
-    public void testGetID() {
-        System.out.println("getID");
-        Notificacao instance = null;
-        int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test(expected = CaracteresInvalidosException.class)
+    public void notificarNada() throws CaracteresInvalidosException {
+
+        Notificacao not = new Notificacao(null, null, 123, 1, "Acidente", false);
     }
 
-    /**
-     * Test of setID method, of class Notificacao.
-     */
     @Test
-    public void testSetID() {
-        System.out.println("setID");
-        int ID = 0;
-        Notificacao instance = null;
-        instance.setID(ID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void notificarSomenteTexto() throws CaracteresInvalidosException {
+
+        Notificacao not = new Notificacao("Acidente de moto na uefs", null, 123, 1, "Acidente", false);
+
+        assertNull(not.getFile());
+        assertNotNull(not.getTexto());
+        assertEquals("Acidente de moto na uefs", not.getTexto());
+        assertEquals(123, not.getIdUsuario());
+        assertEquals(1, not.getId());
+        assertEquals(0, not.qtdApoios());
+
     }
 
-    /**
-     * Test of getTexto method, of class Notificacao.
-     */
     @Test
-    public void testGetTexto() {
-        System.out.println("getTexto");
-        Notificacao instance = null;
-        String expResult = "";
-        String result = instance.getTexto();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void notificarComImagem() throws CaracteresInvalidosException {
+
+        Notificacao not1 = new Notificacao("Acidente de moto na uefs", fotoNot1, 123, 1, "Acidente", false);
+
+        assertNotNull(not1.getFile());
+        assertEquals(fotoNot1, not1.getFile());
+        assertNotNull(not1.getTexto());
+        assertEquals("Acidente de moto na uefs", not1.getTexto());
+        assertEquals(123, not1.getIdUsuario());
+        assertEquals(1, not1.getId());
+
+        Notificacao not2 = new Notificacao(null, fotoNot2, 123, 2, "Acidente", false);
+
+        assertNotNull(not2.getFile());
+        assertEquals(fotoNot2, not2.getFile());
+        assertNull(not2.getTexto());
+        assertEquals(123, not2.getIdUsuario());
+        assertEquals(2, not2.getId());
+
     }
 
-    /**
-     * Test of setTexto method, of class Notificacao.
-     */
     @Test
-    public void testSetTexto() {
-        System.out.println("setTexto");
-        String texto = "";
-        Notificacao instance = null;
-        instance.setTexto(texto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void notificarComVideo() throws CaracteresInvalidosException {
+
+        Notificacao not1 = new Notificacao("Acidente de moto na uefs", videoNot1, 123, 1, "Acidente", false);
+
+        assertNotNull(not1.getFile());
+        assertEquals(videoNot1, not1.getFile());
+        assertNotNull(not1.getTexto());
+        assertEquals("Acidente de moto na uefs", not1.getTexto());
+        assertEquals(123, not1.getIdUsuario());
+        assertEquals(1, not1.getId());
+
+        Notificacao not2 = new Notificacao(null, videoNot2, 123, 2, "Acidente", false);
+
+        assertNotNull(not2.getFile());
+        assertEquals(videoNot2, not2.getFile());
+        assertNull(not2.getTexto());
+        assertEquals(123, not2.getIdUsuario());
+        assertEquals(2, not2.getId());
+
     }
 
-    /**
-     * Test of getFoto method, of class Notificacao.
-     */
     @Test
-    public void testGetFoto() {
-        System.out.println("getFoto");
-        Notificacao instance = null;
-        ImageIcon expResult = null;
-        File result = instance.getFoto();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void mudarStatusNotificacao() throws CaracteresInvalidosException {
+
+        Notificacao not = new Notificacao("Acidente de moto na uefs", fotoNot1, 123, 1, "Acidente", false);
+
+        assertFalse(not.getStatus());
+        not.mudarStatus(true, 432); //"LoginOutraPessoa");
+        assertFalse(not.getStatus());
+        not.mudarStatus(true, 123);
+        assertTrue(not.getStatus());
     }
 
-    /**
-     * Test of setFoto method, of class Notificacao.
-     */
-    @Test
-    public void testSetFoto() {
-        System.out.println("setFoto");
-        File foto = null;
-        Notificacao instance = null;
-        instance.setFoto(foto);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getTag method, of class Notificacao.
-     */
-    @Test
-    public void testGetTag() {
-        System.out.println("getTag");
-        Notificacao instance = null;
-        String expResult = "";
-        String result = instance.getTag();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setTag method, of class Notificacao.
-     */
-    @Test
-    public void testSetTag() {
-        System.out.println("setTag");
-        String tag = "";
-        Notificacao instance = null;
-        instance.setTag(tag);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of isStatus method, of class Notificacao.
-     */
-    @Test
-    public void testIsStatus() {
-        System.out.println("isStatus");
-        Notificacao instance = null;
-        boolean expResult = false;
-        boolean result = instance.isStatus();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of MudarStatus method, of class Notificacao.
-     */
-    @Test
-    public void testMudarStatus() {
-        System.out.println("MudarStatus");
-        boolean status = false;
-        Notificacao instance = null;
-        instance.MudarStatus(status);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of comentar method, of class Notificacao.
-     */
-    @Test
-    public void testComentar() {
-        System.out.println("comentar");
-        Notificacao instance = null;
-        instance.comentar();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    
 }
