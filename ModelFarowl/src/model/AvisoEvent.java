@@ -10,7 +10,7 @@ import java.util.EventObject;
  *
  * @author CasaPc
  */
-public class AvisoEvent extends EventObject{
+public class AvisoEvent extends EventObject {
 
     /**
      *
@@ -19,5 +19,5 @@ public class AvisoEvent extends EventObject{
     public AvisoEvent(Object o) {
         super(o);
     }
-    
+
 }

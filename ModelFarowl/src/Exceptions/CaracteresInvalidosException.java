@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class CaracteresInvalidosException extends Exception{
+public class CaracteresInvalidosException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class CaracteresInvalidosException extends Exception{
     public CaracteresInvalidosException(String string) {
         super(string);
     }
-    
+
 }

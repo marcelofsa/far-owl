@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class SemComentariosException extends Exception{
+public class SemComentariosException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class SemComentariosException extends Exception{
     public SemComentariosException(String string) {
         super(string);
     }
-    
+
 }

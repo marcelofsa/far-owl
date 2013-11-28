@@ -4,11 +4,14 @@
  */
 package model;
 
+import Exceptions.CaracteresInvalidosException;
+import java.io.File;
+
 /**
  *
- * @author CasaPc
+ * @author Lucas
  */
-public class Administrador extends Conta{
+public class Administrador extends Conta {
 
     /**
      *
@@ -16,11 +19,13 @@ public class Administrador extends Conta{
      * @param login
      * @param senha
      * @param email
+     * @throws Exceptions.CaracteresInvalidosException
      */
-    public Administrador(String nome, String login, String senha, String email) {
+    public Administrador(String nome, String login, String senha, String email) throws CaracteresInvalidosException {
+
         super(nome, login, senha, email);
     }
-    
+
     /**
      *
      * @param nome
@@ -30,17 +35,17 @@ public class Administrador extends Conta{
      * @param email
      * @param confirmacaoEmail
      * @return retorna um novo administrador
+     * @throws Exceptions.CaracteresInvalidosException
      */
-    public Administrador CriarAdmin(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail){
-        
-        if(senha.equals(confirmacaoSenha) && email.equals(confirmacaoEmail)){
-        return new Administrador(nome, login, senha, email);
-        }
-        else {
+    public Administrador CriarAdmin(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail) throws CaracteresInvalidosException {
+
+        if (senha.equals(confirmacaoSenha) && email.equals(confirmacaoEmail)) {
+            return new Administrador(nome, login, senha, email);
+        } else {
             return null;
         }
     }
-    
+
     /**
      *
      * @param nome
@@ -49,72 +54,33 @@ public class Administrador extends Conta{
      * @param confirmacaoSenha
      * @param email
      * @param confirmacaoEmail
+     * @param cidade
+     * @param estado
      * @param setorAtuacao
      * @param CNPJ
+     * @param foto
+     * @param pais
      * @param endereco
      * @return retorna uma conta oficial
+     * @throws Exceptions.CaracteresInvalidosException
      */
-    public Oficial CriarOficial(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail, String setorAtuacao, int CNPJ, String endereco){
-        
-        if((senha == null ? confirmacaoSenha == null : senha.equals(confirmacaoSenha)) && email.equals(confirmacaoEmail)){
-        return new Oficial(nome, login, senha, email, endereco, CNPJ, setorAtuacao);
-        }
-        else {
+    public Oficial criarOficial(String nome, String login, String senha, String confirmacaoSenha, String email, String confirmacaoEmail,
+            String cidade, String estado, String pais, File foto, String endereco, int CNPJ, String setorAtuacao) throws CaracteresInvalidosException {
+
+        if ((senha == null ? confirmacaoSenha == null : senha.equals(confirmacaoSenha)) && email.equals(confirmacaoEmail)) {
+            return new Oficial(nome, login, senha, email, cidade, estado, pais, foto, endereco, CNPJ, setorAtuacao);
+        } else {
             return null;
         }
     }
-    
-    /**
-     *
-     */
-    public void ExcluirNotificacao(){
-    
-    }
-    
-    /**
-     *
-     */
-    public void AdcionarPublicidade(){
-    
-    }
-    
-    /**
-     *
-     */
-    public void ModificarPublicidade(){
-    
-    }
-    
-    /**
-     *
-     */
-    public void VisualizarAnonimo(){
-    
-    }
-    
-    /**
-     *
-     */
-    public void VisualizarDenuncias(){
-    
-    }
-    
-    /**
-     *
-     */
-    public void ExcluirConta(){
-    
-    }
-    
-    /**
-     *
-     */
-    public void BloqDesBloqUser(){
-    
+
+    public Comum visualizarNotificacaoAnonimo(Notificacao notificacao) {
+        return (Comum) Controller.contas.get(notificacao.getIdUsuario());
     }
 
- 
-    
-    
-    
+    public Comum visualizarComentarioAnonimo(int Id) {
+        return (Comum) Controller.contas.get(Id);
+
+    }
+
 }

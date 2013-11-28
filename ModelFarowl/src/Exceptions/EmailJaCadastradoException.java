@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class EmailJaCadastradoException extends Exception{
+public class EmailJaCadastradoException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class EmailJaCadastradoException extends Exception{
     public EmailJaCadastradoException(String string) {
         super(string);
     }
-    
+
 }

@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class BuscaNaoEncontradaException extends Exception{
+public class BuscaNaoEncontradaException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class BuscaNaoEncontradaException extends Exception{
     public BuscaNaoEncontradaException(String string) {
         super(string);
     }
-    
+
 }

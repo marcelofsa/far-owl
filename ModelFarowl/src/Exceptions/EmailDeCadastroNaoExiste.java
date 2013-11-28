@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class EmailDeCadastroNaoExiste extends Exception{
+public class EmailDeCadastroNaoExiste extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class EmailDeCadastroNaoExiste extends Exception{
     public EmailDeCadastroNaoExiste(String string) {
         super(string);
     }
-    
+
 }

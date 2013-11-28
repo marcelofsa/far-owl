@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class UsuarioNaoEncontradoException extends Exception{
+public class UsuarioNaoEncontradoException extends Exception {
 
     /**
      *
@@ -17,5 +17,5 @@ public class UsuarioNaoEncontradoException extends Exception{
     public UsuarioNaoEncontradoException(String string) {
         super(string);
     }
-    
+
 }

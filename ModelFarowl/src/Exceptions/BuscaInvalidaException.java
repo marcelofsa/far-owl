@@ -8,7 +8,7 @@ package Exceptions;
  *
  * @author CasaPc
  */
-public class BuscaInvalidaException extends Exception{
+public class BuscaInvalidaException extends Exception {
 
     /**
      *
@@ -18,6 +18,4 @@ public class BuscaInvalidaException extends Exception{
         super(string);
     }
 
-  
-    
 }
