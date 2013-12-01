@@ -5,14 +5,24 @@
 package model;
 
 import Exceptions.*;
+import conection.ActionsBD;
+import conection.Conexao;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
  * @author CasaPc
  */
 public class Controller {
+
+    private static final Conexao c1 = Conexao.getInstance();
+    private static ActionsBD conta = ActionsBD.getInstance();
 
     static ArrayList<Conta> contas = new ArrayList();
     static ArrayList<Notificacao> notificacoes = new ArrayList();
@@ -24,6 +34,21 @@ public class Controller {
     static final int not = 1;
     static final int coment = 2;
     static final int apoio = 5;
+
+    /**
+     *
+     */
+    public Controller() {
+        boolean i;
+
+        i = c1.Conectar("maridb.hopto.org", "maridb", "marisenha");
+
+        if (i == true) {
+            System.out.println("Conectado");
+        } else {
+            System.out.println("erro ao conectar");
+        }
+    }
 
     /**
      *
@@ -39,7 +64,7 @@ public class Controller {
      * @throws Exceptions.ContaDeletadaException
      * @throws Exceptions.CaracteresInvalidosException
      */
-    public void cadastrarUsuario(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException, CaracteresInvalidosException {
+    public void cadastrarUsuario(String nome, String login, String senha, String confirmaSenha, String email, String confirmaEmail) throws UsuarioJaExisteException, SenhaincompativelException, EmailJaCadastradoException, ContaDeletadaException, CaracteresInvalidosException, SQLException {
         Comum c = new Comum(nome, login, senha, email, "", "", "", null, "", 0, "");
 
         for (int i = 0; i < contas.size(); i++) {  //verifica emails cadastrados
@@ -57,6 +82,7 @@ public class Controller {
 
                 if (!contas.contains(c)) {
                     contas.add(c);
+                    conta.inserirConta(0, nome, login, senha, email);
                     logado = c;
                 } else {
                     throw new UsuarioJaExisteException("Este Login já esta sendo utilizado por outro Usuario");
@@ -81,7 +107,6 @@ public class Controller {
             logado = c;
         }
         return null;
-
     }
 
     /**
@@ -119,18 +144,11 @@ public class Controller {
 
     /**
      *
-     */
-    public void encriptarSenha() {
-
-    }
-
-    /**
-     *
      * @param texto
      * @return
      */
     public boolean filtrarPost(String texto) {
-        String text[] = texto.split(" ");
+        String text[] = texto.split("");
         for (String text1 : text) {
             return blackList.contains(text1);
         }
@@ -152,16 +170,32 @@ public class Controller {
      * @return
      */
     public boolean verificarLogin(String login) {
-
-        return true;
+        return false;
     }
 
     /**
      *
      * @param email
+     * @throws javax.mail.MessagingException
      */
-    public void recuperarSenha(String email) {
-        //enviaEmail(email);
+    public void recuperarSenha(String email) throws MessagingException {
+        enviaEmail(email, "Prezado usuario, \n"
+                + "Sua nova senha é:" + gerarSenhaNova() + "\n\nIsso é uma mensagem automatica.\n" + "\nNão responda a este email");
+    }
+
+    public String gerarSenhaNova() {
+        String[] carct = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+
+        String senha = "";
+
+        for (int x = 0; x < 16; x++) {
+            int j = (int) (Math.random() * carct.length);
+            senha += carct[j];
+
+        }
+
+        return senha;
+
     }
 
     /**
@@ -352,7 +386,11 @@ public class Controller {
      * @param novaSenha
      */
     public void alterarSenha(String senhaAntiga, String novaSenha, String confirmacaoSenha) {
-
+        if (logado.getSenha().equals(senhaAntiga)) {
+            if (novaSenha.equals(confirmacaoSenha)) {
+                logado.setSenha(novaSenha);
+            }
+        }
     }
 
     /**
@@ -388,12 +426,6 @@ public class Controller {
      */
     public void sair() {
 
-    }
-
-    /**
-     *
-     */
-    public Controller() {
     }
 
     /**
@@ -440,6 +472,52 @@ public class Controller {
      */
     public boolean verificarEmail() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void enviaEmail(String email, String mensagem) throws MessagingException {
+        Properties props = new Properties();
+        /**
+         * Parâmetros de conexão com servidor Gmail
+         */
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.port", "465");
+
+        Session session = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("suportefarowl@gmail.com", "cjkllmnop");
+                    }
+                });
+
+        /**
+         * Ativa Debug para sessão
+         */
+        session.setDebug(true);
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("suportefarowl@gmail.com")); //Remetente
+
+            Address[] toUser = InternetAddress.parse(email);
+
+            message.setRecipients(Message.RecipientType.TO, toUser);
+            message.setSubject("SUPORTE FAROWL");//Assunto
+            message.setText(mensagem);
+            /**
+             * Método para enviar a mensagem criada
+             */
+            Transport.send(message);
+
+            System.out.println("Feito!!!");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
