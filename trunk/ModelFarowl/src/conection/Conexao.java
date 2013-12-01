@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import com.mysql.jdbc.Statement;
-import java.sql.PreparedStatement;
 
 public class Conexao {
 

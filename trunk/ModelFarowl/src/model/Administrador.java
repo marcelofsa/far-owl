@@ -22,7 +22,6 @@ public class Administrador extends Conta {
      * @throws Exceptions.CaracteresInvalidosException
      */
     public Administrador(String nome, String login, String senha, String email) throws CaracteresInvalidosException {
-
         super(nome, login, senha, email);
     }
 
